@@ -1,0 +1,142 @@
+/* 补丁形式注入,随版本更新随时可能更改或移动到其他CSS文件 */
+
+.protyle-scroll:hover .protyle-scroll__up svg,
+.protyle-scroll:hover .protyle-scroll__down svg {
+  opacity: .31 !important;
+}
+
+/* Android 手机端model元素禁用过渡 #283
+适用于 2.4.9 及更老版本思源 */
+#editor:focus-within + div + div + div + div + div {
+  transition: height 0s;
+}
+#editor:not(:focus-within) + div + div + div + div + div {
+  transition: all 0s cubic-bezier(0.65, 0.05, 0.36, 1) 0s;
+  /* 如果存在过渡，编辑器呼出键盘时打开左右面板仍会出现，可通过增加过渡延时明显观察到 */
+}
+/* Android 手机端左右面板宽度调整 #284 */
+body.android #menu {
+  width: max-content;
+  overflow-y: scroll;
+}
+body.android #sidebar {
+  width: 90%;
+}
+
+/* 只读模式提示 #214 */
+.fn__flex-1.protyle:has(div[contenteditable="false"][data-doc-type="NodeDocument"]):hover {
+  background-color: #cccccc33;
+}
+
+/* 优化右上角窗口关闭按钮焦点样式，不适用于思源2.4.3 */
+#closeWindow:hover svg {
+  color: var(--SCC-Gray-HellisePotter) !important;
+}
+
+/* 【设置】-【账号】订阅按钮 */
+body
+  > div.b3-dialog--open
+  > div
+  > div.b3-dialog__container
+  > div:nth-child(3)
+  > div
+  > div.fn__flex-1.fn__flex
+  > div:nth-child(10)
+  > div
+  > div.config-account__center.config-account__center--text
+  > div.ft__center
+  > a.b3-button.b3-button--outline {
+  background-color: var(--b3-theme-primary-lightest);
+  box-shadow: rgb(254 239 234 / 40%) 0px 3px, rgb(0 6 85 / 30%) 0px 5px,
+    rgb(72 69 80 / 10%) 0px 8px;
+}
+
+/* Android Pad 端拖拽页签异常问题 #120
+  Android Pad 端长按文档树列表项引发透明度异常问题 #141
+  屏蔽 Android 端拖拽  */
+body.android .b3-list-item,
+body.android .layout-tab-bar li {
+  -webkit-user-drag: none;
+}
+
+/* 文档树显示文档emoji图标异常 #119 */
+.b3-list-item__icon {
+  font-family: Segoe UI emoji;
+}
+
+/* Android Pad 端禁止在文档树修改图标 #139 */
+body.android .b3-list-item__icon {
+  pointer-events: none;
+}
+
+/* 右下角统计区适当增加右填充 #132 */
+#status .status__counter {
+  padding-right: 5.8px;
+}
+
+/* 集市主题详情页链接颜色与文档内链接颜色不一致 #97 */
+a:not([id="appearanceOpenTheme"]):not([id="appearanceOpenIcon"]):not([id="appearanceOpenEmoji"]):not([id="clearHistory"]):not(.fn__a):not(.b3-chip) {
+  color: var(--b3-protyle-inline-link-color);
+}
+span img:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+@media screen and (min-width: 960px) {
+  /* 部分颜色显示效果优化 */
+  [style="color: var(--b3-font-color8);"],
+  [style="color: var(--b3-font-color9);"] {
+    text-shadow: 1px 0.5px 1px #40051d31 !important;
+  }
+  [style="color: var(--b3-font-color10);"] {
+    text-shadow: 1px 0.5px 1px #7f04f558 !important;
+  }
+  [style="color: var(--b3-font-color11);"] {
+    text-shadow: 1px 0.5px 1px #0b0bff31 !important;
+  }
+}
+@media screen and (max-width: 960px) {
+  /* 部分颜色显示效果优化 */
+  [style="color: var(--b3-font-color8);"],
+  [style="color: var(--b3-font-color9);"] {
+    text-shadow: -0.5px 0.5px 0.5px #40051d58 !important;
+  }
+  [style="color: var(--b3-font-color10);"] {
+    text-shadow: -0.5px 0.5px 1px #7f04f531 !important;
+  }
+  [style="color: var(--b3-font-color11);"] {
+    text-shadow: -0.5px 0.5px 1px #0b0bff31 !important;
+  }
+}
+
+/* Android 端文档树功能区视觉效果调整 #58 */
+
+body.android .b3-list-item__arrow {
+  scale: 1.31 !important;
+  margin-right: 0px !important;
+  opacity: 0.58 !important;
+}
+body.android .b3-list-item__icon {
+  scale: 0.8 !important;
+  opacity: 0.8 !important;
+  margin-right: 0px !important;
+  padding: 0 1px !important;
+}
+body.android .b3-list-item__toggle {
+  min-height: 1.3em !important;
+}
+body.android .b3-list-item__toggle:hover {
+  background-color: transparent !important;
+}
+body.android .b3-list {
+  min-height: 40px !important;
+}
+body.android .b3-list-item__text {
+  font-size: 0.88em !important;
+}
+
+
+body:not(.android) .protyle-wysiwyg [data-node-id].li>.list {
+  margin-left: max(min(18px,0.8vw),8px) !important;
+  padding-left: min(16px,0.8vw);
+}
