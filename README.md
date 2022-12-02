@@ -16,6 +16,6 @@
 
 ## 🔭 更新预告
 
-基于 Sofill- v0.124
+基于 Sofill- v0
 
 <p style="text-align:center">- The End -</p>

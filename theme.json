@@ -2,8 +2,8 @@
   "name": "Sofill=",
   "author": "Soltus",
   "url": "https://github.com/Hi-Windom/lili",
-  "version": "0.2",
+  "version": "1.0a1",
   "modes": [
-    "light","dark"
+    "light"
   ]
 }
