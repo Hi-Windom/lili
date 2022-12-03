@@ -1,1 +1,74 @@
 @import url("./../Sofill-/theme.css");
+
+#preview {
+  container-type: inline-size;
+  container-name: preview;
+  color: var(--SCC-Variables-preview-doc-bg-color, #000);
+  background-color: var(--SCC-Variables-preview-doc-bg-color, #fff) !important;
+  --SCC-Variables-preview-h1-color: #abc;
+  --SCC-Variables-preview-h2-color: #abc;
+  --SCC-Variables-preview-h3-color: #abc;
+  --SCC-Variables-preview-h4-color: #abc;
+  --SCC-Variables-preview-h5-color: #abc;
+  --SCC-Variables-preview-h6-color: #abc;
+}
+
+#action {
+  container-type: inline-size;
+  container-name: action;
+}
+
+
+
+/* 指定容器名称时，空格和条件都不能省略 */
+@container preview (min-width: 1px) {
+  .h1 {
+    color: var(--SCC-Variables-preview-h1-color, #000) !important;
+  }
+
+  .h2 {
+    color: var(--SCC-Variables-preview-h2-color, #000) !important;
+  }
+
+  .h3 {
+    color: var(--SCC-Variables-preview-h3-color, #000) !important;
+  }
+
+  .h4 {
+    color: var(--SCC-Variables-preview-h4-color, #000) !important;
+  }
+
+  .h5 {
+    color: var(--SCC-Variables-preview-h5-color, #000) !important;
+  }
+
+  .h6 {
+    color: var(--SCC-Variables-preview-h6-color, #000) !important;
+  }
+
+}
+
+/* 指定容器名称时，空格和条件都不能省略 */
+@container action (min-width: 1px) {
+  .b3-select {
+    background-color: var(--SCC-Variables-action-selector-bg-color, var(--SCC-baseComponent-selector-bg-color)) !important;
+  }
+
+  .b3-slider {
+    height: 27px !important;
+  }
+
+  .b3-switch {
+    border-radius: 5.8px !important;
+    box-shadow: #585858 -1px -1px 3px 0 !important;
+  }
+
+  .b3-switch:checked {
+    opacity: 0.98 !important;
+    background-color: var(--b3-theme-primary-light) !important;
+  }
+
+  .b3-switch:checked:after {
+    border-color: var(--SCC-baseComponent-Switch-checked-ab-color) !important;
+  }
+}
