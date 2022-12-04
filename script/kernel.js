@@ -11,37 +11,50 @@ async function isFileExisted(path_way) {
       } else {
         response(true);
       }
-    })
-  })
-};
+    });
+  });
+}
 
 async function winsayKernel(path_way) {
   try {
-    isFileExisted(path_way).then((response)=>{
-      if (response) {
-        window.funs.loadScript(
-          window.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
-          undefined,
-          true
-        );
-        console.log("Sofill- kernel loaded");
-      } else {
-        new Notification("Sofill- 内核损坏", {
-          body: "请前往集市重装 Sofill- 后继续",
-        }).onclick = () =>
-          (console.log("Notification clicked!"));
-      }
-    })
+    let xiao = await new Promise((resolve, reject) => {
+      isFileExisted(path_way).then((response) => {
+        if (response) {
+          window.funs.loadScript(
+            window.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
+            undefined,
+            true
+          );
+          console.log("Sofill- kernel loaded");
+          resolve(true);
+        } else {
+          new Notification("Sofill- 内核损坏", {
+            body: "请前往集市重装 Sofill- 后继续",
+          }).onclick = () => console.log("Notification clicked!");
+          reject(false);
+        }
+      });
+    });
+    return xiao;
   } catch (error) {
     console.log(error);
+    return false;
   }
 }
 
-if (!window.siyuan.config.appearance.lightThemes.includes("Sofill-")) {
-  new Notification("Sofill- 内核未安装", {
-    body: "请前往集市安装 Sofill- 后继续",
-  }).onclick = () =>
-    (console.log("Notification clicked!"));
-} else {
-  winsayKernel(`${winsay_ROOT}theme.js`);
-}
+setTimeout(async () => {
+  if (!window.siyuan.config.appearance.lightThemes.includes("Sofill-")) {
+    new Notification("Sofill- 内核未安装", {
+      body: "请前往集市安装 Sofill- 后继续",
+    }).onclick = () => console.log("Notification clicked!");
+  } else {
+    let ready = await winsayKernel(`${winsay_ROOT}theme.js`);
+    ready
+      ? window.funs.loadScript(
+          window.funs.addURLParam("/appearance/themes/Sofill=/script/VS.js"),
+          undefined,
+          true
+        )
+      : console.error("no ready");
+  }
+});
