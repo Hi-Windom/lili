@@ -49,12 +49,19 @@ setTimeout(async () => {
     }).onclick = () => console.log("Notification clicked!");
   } else {
     let ready = await winsayKernel(`${winsay_ROOT}theme.js`);
-    ready
-      ? window.funs.loadScript(
-          window.funs.addURLParam("/appearance/themes/Sofill=/script/VS.js"),
-          undefined,
-          true
-        )
-      : console.error("no ready");
+    if (ready) {
+      window.funs.loadScript(
+        window.funs.addURLParam("/appearance/themes/Sofill=/script/VS.js"),
+        undefined,
+        true
+      );
+      window.funs.loadScript(
+        window.funs.addURLParam("/appearance/themes/Sofill=/script/module/CPext.js"),
+        undefined,
+        true
+      );
+    } else {
+      console.error("no ready");
+    }
   }
 });

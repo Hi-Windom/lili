@@ -15,9 +15,9 @@ nblist.then((result) => {
 }).then(async (NBList) => {
   for(let j=0,len=NBList.length;j<len;j++) {
     if (NBList[j].closed){
-      //API.openNotebook(NBList[j].id); 需等待
+      // API.openNotebook(NBList[j].id); 需等待
     } else {
-      API.closeNotebook(NBList[j].id);
+      // API.closeNotebook(NBList[j].id);
     }
   }
 });
