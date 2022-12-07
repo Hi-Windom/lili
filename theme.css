@@ -1,4 +1,6 @@
 @import url("./../Sofill-/theme.css");
+@import url("./style/fonts.css");
+@import url("./style/CP-lili.css");
 
 #preview {
   container-type: inline-size;
