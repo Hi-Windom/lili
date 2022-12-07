@@ -56,6 +56,11 @@ setTimeout(async () => {
         true
       );
       window.funs.loadScript(
+        window.funs.addURLParam("/appearance/themes/Sofill=/script/lili_sprite.js"),
+        undefined,
+        true
+      );
+      window.funs.loadScript(
         window.funs.addURLParam("/appearance/themes/Sofill=/script/module/CPext.js"),
         undefined,
         true
