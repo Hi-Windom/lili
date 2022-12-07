@@ -11,6 +11,7 @@
   backdrop-filter: brightness(.13) invert(1);
   overflow: hidden;
   z-index: 999999;
+  user-select: none;
 }
 
 .neko-side {
