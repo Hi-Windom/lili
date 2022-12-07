@@ -1,3 +1,4 @@
+import {renderPDF} from "./module/renderPDF.js";
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
@@ -86,6 +87,8 @@ neko.onmousedown = function (e) {
   };
   if (e.button == 0) {
     console.log("鼠标左键!");
+    let id = document.querySelector("#layouts .layout__center .protyle .protyle-background.protyle-background--enable").attributes["data-node-id"].value;
+    renderPDF(id);
   } else if (e.button == 2) {
     console.log("鼠标右键!");
     var sprite_menu = neko_container.querySelector("#sprite_menu");
