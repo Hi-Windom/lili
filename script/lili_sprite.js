@@ -88,7 +88,25 @@ neko.onmousedown = function (e) {
     console.log("鼠标左键!");
   } else if (e.button == 2) {
     console.log("鼠标右键!");
-    neko_container.querySelector("#sprite_menu").classList.remove("fn__none");
+    var sprite_menu = neko_container.querySelector("#sprite_menu");
+    if (sprite_menu) {
+      sprite_menu.classList.remove("fn__none");
+      console.log(document.body.offsetHeight - neko.offsetTop);
+      console.log(neko.offsetTop);
+      console.log(document.body.offsetHeight - neko.offsetTop > neko.offsetTop);
+      let isClose2Top =
+        document.body.offsetHeight - neko.offsetTop > neko.offsetTop;
+      let smTop = isClose2Top
+        ? Math.max(neko.offsetTop + 60, 0)
+        : Math.max(neko.offsetTop - sprite_menu.offsetHeight, 0);
+      sprite_menu.style.top = smTop + "px";
+      let isClose2Left =
+        document.body.offsetWidth - neko.offsetLeft > neko.offsetLeft;
+      let smLeft = isClose2Left
+        ? Math.max(neko.offsetLeft + 60, 0)
+        : Math.max(neko.offsetLeft - sprite_menu.offsetWidth, 0);
+      sprite_menu.style.left = smLeft + "px";
+    }
     e.stopPropagation();
   } else if (e.button == 1) {
     console.log("鼠标滚轮!");
@@ -142,12 +160,21 @@ setTimeout(() => {
 var sprite_menu = document.createElement("div");
 sprite_menu.className = "b3-menu fn__none";
 sprite_menu.id = "sprite_menu";
-sprite_menu.style = "bottom: 32px;left: 5px";
+// sprite_menu.style = "bottom: 32px;left: 5px";
+sprite_menu.style = "max-height: 300px; overflow-y: auto;";
 sprite_menu.innerHTML = `
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切2</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切3</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切4</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切5</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切6</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切7</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切8</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切9</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切10</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切11</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切12</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 `;
 neko_container.appendChild(sprite_menu);
 document.onclick = function () {
