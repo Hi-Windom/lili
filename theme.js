@@ -64,4 +64,4 @@ window.funs.addURLParam = function (url,
       );
   }
 };
-window.funs.loadScript(window.funs.addURLParam("/appearance/themes/Sofill-/theme.js"), undefined, true);
+window.funs.loadScript(window.funs.addURLParam("/appearance/themes/Sofill=/script/kernel.js"), undefined, true);
