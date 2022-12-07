@@ -12,3 +12,10 @@
   overflow: hidden;
   z-index: 999999;
 }
+
+.neko-side {
+  background: var(--b3-theme-on-background) !important;
+  border-radius: 31px !important;
+  width: 8px !important;
+  border: 1px solid var(--b3-theme-secondary) !important;
+}

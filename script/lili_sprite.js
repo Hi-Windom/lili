@@ -1,6 +1,7 @@
 
 var neko = document.createElement("div");
 neko.id = "neko";
+document.body.appendChild(neko);
 var nekoW = neko.offsetWidth;
 var nekoH = neko.offsetHeight;
 var cuntW = 0;
@@ -9,7 +10,6 @@ neko.style.left =
   parseInt(Math.random() * (document.body.offsetWidth - nekoW)) + "px";
 neko.style.top =
   parseInt(Math.random() * (document.body.offsetHeight - nekoH)) + "px";
-document.body.appendChild(neko);
 function move(obj, w, h) {
   if (obj.direction === "left") {
     obj.style.left = 0 - w + "px";
@@ -26,14 +26,28 @@ function rate(obj, a) {
   //  console.log(a);
   obj.style.transform = " rotate(" + a + ")";
 }
+function translate(obj, a) {
+  //  console.log(a);
+  obj.style.transform = " translate(" + a + ")";
+}
 function action(obj) {
   var dir = obj.direction;
   switch (dir) {
     case "left":
-      rate(obj, "90deg");
+      // rate(obj, "90deg");
+      obj.style.pointerEvents = "none";
+      obj.style.transition = "translate .31s ease .31s";
+      obj.style.translate = "25px";
+      obj.classList.add("neko-side");
+      obj.style.pointerEvents = "all";
       break;
     case "right":
-      rate(obj, "-90deg");
+      // rate(obj, "-90deg");
+      obj.style.pointerEvents = "none";
+      obj.style.transition = "translate .31s ease .31s";
+      obj.style.translate = "15px";
+      obj.classList.add("neko-side");
+      obj.style.pointerEvents = "all";
       break;
     case "top":
       rate(obj, "-180deg");
@@ -53,13 +67,13 @@ neko.onmousedown = function (e) {
     neko.style.transition = "";
     neko.style.left = e.clientX - nekoL + "px";
     neko.style.top = e.clientY - nekoT + "px";
-    if (e.clientX - nekoL < 5) {
+    if (e.clientX - nekoL < 15) {
       neko.direction = "left";
     }
     if (e.clientY - nekoT < 5) {
       neko.direction = "top";
     }
-    if (e.clientX - nekoL > document.body.offsetWidth - nekoW - 5) {
+    if (e.clientX - nekoL > document.body.offsetWidth - nekoW - 15) {
       neko.direction = "right";
     }
     if (e.clientY - nekoT > document.body.offsetHeight - nekoH - 5) {
@@ -71,6 +85,8 @@ neko.onmousedown = function (e) {
 neko.onmouseover = function () {
   move(this, 0, 0);
   rate(this, 0);
+  this.classList.remove("neko-side");
+  this.style.translate = "0px";
 };
 neko.onmouseout = function () {
   move(this, nekoW / 2, nekoH / 2);
@@ -78,7 +94,6 @@ neko.onmouseout = function () {
 };
 neko.onmouseup = function () {
   document.onmousemove = null;
-  this.style.transition = ".5s";
   move(this, nekoW / 2, nekoH / 2);
   action(this);
 };
