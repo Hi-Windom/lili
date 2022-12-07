@@ -1,0 +1,22 @@
+#neko {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  position: fixed;
+  cursor: move;
+  box-sizing: border-box;
+  border: 13px dashed var(--b3-theme-secondary);
+  border-radius: 50%;
+  background: url('./../src/img/taiji.svg') no-repeat center/cover;
+  backdrop-filter: brightness(.13) invert(1);
+  overflow: hidden;
+  z-index: 999999;
+  user-select: none;
+}
+
+.neko-side {
+  background: var(--b3-theme-on-background) !important;
+  border-radius: 31px !important;
+  width: 8px !important;
+  border: 1px solid var(--b3-theme-secondary) !important;
+}
