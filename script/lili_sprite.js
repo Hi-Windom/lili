@@ -1,6 +1,8 @@
+var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
-document.body.appendChild(neko);
+document.body.appendChild(neko_container);
+neko_container.appendChild(neko);
 var nekoW = neko.offsetWidth;
 var nekoH = neko.offsetHeight;
 var cuntW = 0;
@@ -82,6 +84,15 @@ neko.onmousedown = function (e) {
     localStorage.setItem("SC_lili_neko_direction", neko.direction);
     move(neko, 0, 0);
   };
+  if (e.button == 0) {
+    console.log("鼠标左键!");
+  } else if (e.button == 2) {
+    console.log("鼠标右键!");
+    neko_container.querySelector("#sprite_menu").classList.remove("fn__none");
+    e.stopPropagation();
+  } else if (e.button == 1) {
+    console.log("鼠标滚轮!");
+  }
 };
 neko.onmouseover = function () {
   document.onmouseleave = null;
@@ -99,6 +110,9 @@ neko.onmouseup = function () {
   document.onmousemove = null;
   move(this, nekoW / 2, nekoH / 2);
   action(this);
+};
+neko.ondragstart = function () {
+  return false;
 };
 window.onresize = function () {
   var bodyH = document.body.offsetHeight;
@@ -123,4 +137,59 @@ window.onresize = function () {
 };
 setTimeout(() => {
   action(neko);
-},2000)
+}, 2000);
+
+var sprite_menu = document.createElement("div");
+sprite_menu.className = "b3-menu fn__none";
+sprite_menu.id = "sprite_menu";
+sprite_menu.style = "bottom: 32px;left: 5px";
+sprite_menu.innerHTML = `
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切2</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切3</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切4</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+`;
+neko_container.appendChild(sprite_menu);
+document.onclick = function () {
+  sprite_menu.classList.add("fn__none");
+};
+
+var sprite_menu_selected_iterm;
+sprite_menu.querySelectorAll(".b3-menu__item").forEach((b) => {
+  b.ondragstart = dragStart;
+  b.ondragend = dragEnd;
+  b.ondragover = dragOver;
+});
+function dragOver(e) {
+  var p = e.target;
+  while (!p.classList.contains("b3-menu__item")) {
+    p = p.parentNode;
+  }
+  //向前拖拽向后拖拽
+  //拖动目标(drop)是不是在拖拽源(drag)的前面
+  if (isBefore(sprite_menu_selected_iterm, p)) {
+    p.parentNode.insertBefore(sprite_menu_selected_iterm, p);
+  } else {
+    p.parentNode.insertBefore(sprite_menu_selected_iterm, p.nextSibling);
+  }
+}
+
+function dragEnd() {
+  sprite_menu_selected_iterm = null;
+}
+
+function dragStart(e) {
+  sprite_menu_selected_iterm = e.target;
+  while (!sprite_menu_selected_iterm.classList.contains("b3-menu__item")) {
+    sprite_menu_selected_iterm = sprite_menu_selected_iterm.parentNode;
+  }
+}
+
+function isBefore(el1, el2) {
+  var cur;
+  if (el2.parentNode === el1.parentNode) {
+    for (cur = el1.previousSibling; cur; cur = cur.previousSibling) {
+      if (cur === el2) return true;
+    }
+  } else return false;
+}
