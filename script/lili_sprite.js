@@ -89,12 +89,10 @@ neko.onmousedown = function (e) {
     console.log("鼠标左键!");
   } else if (e.button == 2) {
     console.log("鼠标右键!");
+    if(document.querySelector("#SC-CP").style.display != "none" || document.querySelectorAll(".b3-dialog__scrim").length > 1) return;
     var sprite_menu = neko_container.querySelector("#sprite_menu");
     if (sprite_menu) {
       sprite_menu.classList.remove("fn__none");
-      console.log(document.body.offsetHeight - neko.offsetTop);
-      console.log(neko.offsetTop);
-      console.log(document.body.offsetHeight - neko.offsetTop > neko.offsetTop);
       let isClose2Top =
         document.body.offsetHeight - neko.offsetTop > neko.offsetTop;
       let smTop = isClose2Top
