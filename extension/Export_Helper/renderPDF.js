@@ -479,7 +479,7 @@ export const renderPDF = (id) => {
   const mainWindow = getCurrentWindow();
   window.siyuan.printWin = new BrowserWindow({
     parent: mainWindow,
-    modal: false,
+    modal: true,
     show: true,
     width: 1032,
     height: 800,

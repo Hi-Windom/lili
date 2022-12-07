@@ -1,4 +1,4 @@
-import {renderPDF} from "./module/renderPDF.js";
+import {renderPDF} from "../extension/Export_Helper/renderPDF.js";
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
@@ -87,8 +87,6 @@ neko.onmousedown = function (e) {
   };
   if (e.button == 0) {
     console.log("鼠标左键!");
-    let id = document.querySelector("#layouts .layout__center .protyle .protyle-background.protyle-background--enable").attributes["data-node-id"].value;
-    renderPDF(id);
   } else if (e.button == 2) {
     console.log("鼠标右键!");
     var sprite_menu = neko_container.querySelector("#sprite_menu");
@@ -166,7 +164,7 @@ sprite_menu.id = "sprite_menu";
 // sprite_menu.style = "bottom: 32px;left: 5px";
 sprite_menu.style = "max-height: 300px; overflow-y: auto;";
 sprite_menu.innerHTML = `
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button id = "lili_ext_Export_Helper_renderPDF" class="b3-menu__item" draggable="true"><span class="b3-menu__label">导出PDF</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切2</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切3</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切4</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
@@ -183,7 +181,16 @@ neko_container.appendChild(sprite_menu);
 document.onclick = function () {
   sprite_menu.classList.add("fn__none");
 };
-
+sprite_menu.addEventListener("click",(e) => {
+  var p = e.target;
+  while (!p.classList.contains("b3-menu__item")) {
+    p = p.parentNode;
+  }
+  if(p.id=="lili_ext_Export_Helper_renderPDF") {
+    let id = document.querySelector("#layouts .layout__center .protyle .protyle-background.protyle-background--enable").attributes["data-node-id"].value;
+  renderPDF(id);
+  }
+})
 var sprite_menu_selected_iterm;
 sprite_menu.querySelectorAll(".b3-menu__item").forEach((b) => {
   b.ondragstart = dragStart;
