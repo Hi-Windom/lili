@@ -1,5 +1,7 @@
 import { renderPDF } from "../extension/Export_Helper/renderPDF.js";
 import { checkedChange } from "../../Sofill-/script/CP.js";
+import * as SC_SVG from "../../Sofill=/eHiWindom/Assets_Manager/SVG_data.js"
+console.log(SC_SVG.D)
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
