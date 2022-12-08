@@ -21,6 +21,16 @@
   border: 1px solid var(--b3-theme-secondary) !important;
 }
 
+#sprite_menu {
+  box-shadow: var(--b3-dialog-shadow);
+  background-color: var(--b3-theme-background-light);
+  backdrop-filter: blur(5.8px);
+}
+
+#sprite_menu .b3-menu__item {
+  background-color: transparent;
+}
+
 #sprite_menu .b3-switch {
   box-sizing: content-box;
   margin: 5px 13px;
@@ -48,4 +58,26 @@
   width: 168px;
   margin: 3.1px auto;
   align-self: center;
+}
+
+@keyframes lili_turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }

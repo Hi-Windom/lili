@@ -175,6 +175,11 @@ sprite_menu.id = "sprite_menu";
 // sprite_menu.style = "bottom: 32px;left: 5px";
 sprite_menu.style = "max-height: 300px; overflow-y: auto;";
 sprite_menu.innerHTML = `
+<div class="fn__flex lili_sprite_menu__dragP"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_666_enable" type="checkbox" checked="">
+<button id="lili_666" class="b3-menu__item" draggable="true">
+<svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
+<span class="b3-menu__label">丽丽自转</span>
+</button></div>
 <div class="fn__flex lili_sprite_menu__dragP"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable" type="checkbox" checked="">
 <button id="lili_ext_Export_Helper_renderPDF" class="b3-menu__item" draggable="true">
 <svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
@@ -203,6 +208,24 @@ document.onclick = function (e) {
   }
   sprite_menu.classList.add("fn__none");
 };
+API.checkedChange(
+  document.getElementById("SC_winsay_cp_extension_lili_666_enable"),
+  () => {
+    let t = document.getElementById("lili_666");
+    t.draggable = true;
+    t.style.pointerEvents = "all";
+    t.style.opacity = "1";
+    neko.style.animation =
+      "0.25s cubic-bezier(0.77, -0.06, 0, 0.87) 0s infinite normal none running lili_turn";
+  },
+  () => {
+    let t = document.getElementById("lili_666");
+    t.draggable = false;
+    t.style.pointerEvents = "none";
+    t.style.opacity = "0.31";
+    neko.style.animation = "none";
+  }
+);
 API.checkedChange(
   document.getElementById(
     "SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable"
