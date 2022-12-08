@@ -274,10 +274,7 @@ sprite_menu.addEventListener("click", (e) => {
     p = p.parentNode;
   }
   if (p.id == "lili_ext_Export_Helper_renderPDF") {
-    let id = document.querySelector(
-      "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
-    ).attributes["data-node-id"].value;
-    renderPDF(id);
+    renderPDF(API.getFocusedDocID());
   }
   if (p.id == "lili_ext_Publish_Helper_renderPublishHelper") {
     isFileExisted(
