@@ -111,7 +111,9 @@ export const renderGraphHelper = (id) => {
   </body>
   <script
       type="text/javascript">
-      function createScript(src, type) { let script = document.createElement('script'); script.src = src; script.async = false; script.type = type ? type : 'text/javascript'; document.body.appendChild(script); }; window.onload = () => { createScript("http://127.0.0.1:6806/widgets/Graph/lib/bootstrap-3.4.1-dist/js/bootstrap.min.js", null); createScript("http://127.0.0.1:6806/widgets/Graph/lib/g6.min.js", null); createScript("http://127.0.0.1:6806/widgets/Graph/main.js", "module"); };</script>
+      function createScript(src, type) { let script = document.createElement('script'); script.src = src; script.async = false; script.type = type ? type : 'text/javascript'; document.body.appendChild(script); }; window.onload = () => { createScript("http://127.0.0.1:6806/widgets/Graph/lib/bootstrap-3.4.1-dist/js/bootstrap.min.js", null); createScript("http://127.0.0.1:6806/widgets/Graph/lib/g6.min.js", null); createScript("http://127.0.0.1:6806/widgets/Graph/main.js", "module"); };
+      setTimeout(()=>{getAllLinksToGraph();},300)
+      </script>
   </html>
   `;
   const mainWindow = getCurrentWindow();

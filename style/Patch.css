@@ -35,3 +35,17 @@
   color: var(--b3-theme-primary);
   letter-spacing: .31px;
 }
+
+.SC_mall_badge_container {
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 31px 0;
+}
+
+.SC_mall_badge_container>img {
+  height: 38px;
+  width: 168px;
+  margin: 3.1px auto;
+  align-self: center;
+}
