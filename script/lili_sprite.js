@@ -1,4 +1,5 @@
-import {renderPDF} from "../extension/Export_Helper/renderPDF.js";
+import { renderPDF } from "../extension/Export_Helper/renderPDF.js";
+import { checkedChange } from "../../Sofill-/script/CP.js";
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
@@ -61,6 +62,9 @@ function action(obj) {
       break;
   }
 }
+neko.ondblclick = function (e) {
+  document.getElementById("SC-CP").style.display = "block";
+};
 neko.onmousedown = function (e) {
   var nekoL = e.clientX - neko.offsetLeft;
   var nekoT = e.clientY - neko.offsetTop;
@@ -89,7 +93,11 @@ neko.onmousedown = function (e) {
     console.log("鼠标左键!");
   } else if (e.button == 2) {
     console.log("鼠标右键!");
-    if(document.querySelector("#SC-CP").style.display != "none" || document.querySelectorAll(".b3-dialog__scrim").length > 1) return;
+    if (
+      document.querySelector("#SC-CP").style.display != "none" ||
+      document.querySelectorAll(".b3-dialog__scrim").length > 1
+    )
+      return;
     var sprite_menu = neko_container.querySelector("#sprite_menu");
     if (sprite_menu) {
       sprite_menu.classList.remove("fn__none");
@@ -162,7 +170,12 @@ sprite_menu.id = "sprite_menu";
 // sprite_menu.style = "bottom: 32px;left: 5px";
 sprite_menu.style = "max-height: 300px; overflow-y: auto;";
 sprite_menu.innerHTML = `
-<button id = "lili_ext_Export_Helper_renderPDF" class="b3-menu__item" draggable="true"><span class="b3-menu__label">导出PDF</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable" type="checkbox" checked="">
+<button id="lili_ext_Export_Helper_renderPDF" class="b3-menu__item" draggable="true">
+    <svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
+    <span class="b3-menu__label">导出PDF</span>
+    </button></div>
+<button class="b3-menu__separator"></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切2</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切3</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切4</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
@@ -171,24 +184,49 @@ sprite_menu.innerHTML = `
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切7</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切8</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切9</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<button class="b3-menu__separator"></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切10</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切11</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 <button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切12</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
 `;
 neko_container.appendChild(sprite_menu);
-document.onclick = function () {
+document.onclick = function (e) {
+  var p = e.target;
+  while (!p.classList.contains("fn__flex-column")) {
+    if(p.id=="sprite_menu"){return;}
+    p = p.parentNode;
+  }
   sprite_menu.classList.add("fn__none");
 };
-sprite_menu.addEventListener("click",(e) => {
+checkedChange(
+  document.getElementById("SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable"),
+  () => {
+    document.getElementById("lili_ext_Export_Helper_renderPDF").style.pointerEvents = "all";
+    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity = "1";
+  },
+  () => {
+    document.getElementById("lili_ext_Export_Helper_renderPDF").style.pointerEvents = "none";
+    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity = "0.31";
+  }
+);
+sprite_menu.onmouseover = function (e) {
   var p = e.target;
   while (!p.classList.contains("b3-menu__item")) {
     p = p.parentNode;
   }
-  if(p.id=="lili_ext_Export_Helper_renderPDF") {
-    let id = document.querySelector("#layouts .layout__center .protyle .protyle-background.protyle-background--enable").attributes["data-node-id"].value;
-  renderPDF(id);
+};
+sprite_menu.addEventListener("click", (e) => {
+  var p = e.target;
+  while (!p.classList.contains("b3-menu__item")) {
+    p = p.parentNode;
   }
-})
+  if (p.id == "lili_ext_Export_Helper_renderPDF") {
+    let id = document.querySelector(
+      "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
+    ).attributes["data-node-id"].value;
+    renderPDF(id);
+  }
+});
 var sprite_menu_selected_iterm;
 sprite_menu.querySelectorAll(".b3-menu__item").forEach((b) => {
   b.ondragstart = dragStart;

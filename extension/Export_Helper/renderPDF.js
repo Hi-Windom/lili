@@ -150,6 +150,10 @@ export const renderPDF = (id) => {
         right: 232px;
         left: 0;
       }
+      #preview > .code-block {
+        margin-left: auto;
+        margin-right: auto;
+     }
       #preview.exporting {
         position: inherit;
         max-width: none;
