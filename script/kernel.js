@@ -1,27 +1,24 @@
-import * as API from "./../../Sofill-/script/utils/api.min.js";
 import * as config from "./../../Sofill-/script/config.js";
 import { ConfirmDialog } from "./../../Sofill-/script/module/CPM.js";
 import * as CD from "./../../Sofill-/script/module/XML/ConfirmDialog.js";
+import { isFileExisted } from "./utils/liliFuns.js";
 var fs = null;
 var lili = null;
 
-if (API.isAppMode()) {
+if (
+  document.getElementsByTagName("body")[0].classList.contains("android")
+    ? false
+    : document
+        .getElementsByTagName("body")[0]
+        .classList.contains("body--desktop")
+    ? false
+    : window.siyuan.config.system.os == "windows" ||
+      window.siyuan.config.system.os == "darwin"
+    ? true
+    : false
+) {
   fs = require("fs");
   lili = true;
-}
-
-async function isFileExisted(path_way) {
-  return new Promise((response) => {
-    fs
-      ? fs.access(path_way, (err) => {
-          if (err) {
-            response(false);
-          } else {
-            response(true);
-          }
-        })
-      : null;
-  });
 }
 
 async function winsayKernel(path_way) {
@@ -101,10 +98,10 @@ setTimeout(() => {
         once.open(() => {
           document.getElementById(
             "UpdateInfo"
-          ).innerHTML = `注意：当前正在不支持的平台使用 ${config.ThemeName}，仅为您加载 Sofill- 内核！若想体验 Sofill= ，请使用思源笔记 Windows 客户端`;
+          ).innerHTML = `注意：当前正在不支持的平台使用 ${config.ThemeName} 主题，仅为您加载 Sofill- 内核！若想体验 Sofill= 主题，请使用思源笔记 Windows 客户端`;
           document.getElementById(
             "CoverWarming"
-          ).innerHTML = `推荐使用全平台支持的 Sofill- 主题`;
+          ).innerHTML = `当前环境推荐使用全平台支持的 Sofill- 主题`;
         });
       }
     } else {
