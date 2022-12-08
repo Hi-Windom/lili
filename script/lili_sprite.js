@@ -175,18 +175,18 @@ sprite_menu.id = "sprite_menu";
 // sprite_menu.style = "bottom: 32px;left: 5px";
 sprite_menu.style = "max-height: 300px; overflow-y: auto;";
 sprite_menu.innerHTML = `
-<div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable" type="checkbox" checked="">
+<div class="fn__flex lili_sprite_menu__dragP"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable" type="checkbox" checked="">
 <button id="lili_ext_Export_Helper_renderPDF" class="b3-menu__item" draggable="true">
 <svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
 <span class="b3-menu__label">导出PDF</span>
 </button></div>
-<div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Publish_Helper_renderPublishHelper_enable" type="checkbox" checked="">
+<div class="fn__flex lili_sprite_menu__dragP"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Publish_Helper_renderPublishHelper_enable" type="checkbox" checked="">
 <button id="lili_ext_Publish_Helper_renderPublishHelper" class="b3-menu__item" draggable="true">
 <svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
 <span class="b3-menu__label">发布助手</span>
 </button></div>
 <button class="b3-menu__separator"></button>
-<div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Graph_Helper_renderPublishHelper_enable" type="checkbox" checked="">
+<div class="fn__flex lili_sprite_menu__dragP"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Graph_Helper_renderPublishHelper_enable" type="checkbox" checked="">
 <button id="lili_ext_Graph_Helper_renderPublishHelper" class="b3-menu__item" draggable="true">
 <svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
 <span class="b3-menu__label">图谱助手</span>
@@ -208,18 +208,16 @@ API.checkedChange(
     "SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable"
   ),
   () => {
-    document.getElementById(
-      "lili_ext_Export_Helper_renderPDF"
-    ).style.pointerEvents = "all";
-    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity =
-      "1";
+    let t = document.getElementById("lili_ext_Export_Helper_renderPDF");
+    t.draggable = true;
+    t.style.pointerEvents = "all";
+    t.style.opacity = "1";
   },
   () => {
-    document.getElementById(
-      "lili_ext_Export_Helper_renderPDF"
-    ).style.pointerEvents = "none";
-    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity =
-      "0.31";
+    let t = document.getElementById("lili_ext_Export_Helper_renderPDF");
+    t.draggable = false;
+    t.style.pointerEvents = "none";
+    t.style.opacity = "0.31";
   }
 );
 API.checkedChange(
@@ -227,20 +225,20 @@ API.checkedChange(
     "SC_winsay_cp_extension_lili_ext_Publish_Helper_renderPublishHelper_enable"
   ),
   () => {
-    document.getElementById(
+    let t = document.getElementById(
       "lili_ext_Publish_Helper_renderPublishHelper"
-    ).style.pointerEvents = "all";
-    document.getElementById(
-      "lili_ext_Publish_Helper_renderPublishHelper"
-    ).style.opacity = "1";
+    );
+    t.draggable = true;
+    t.style.pointerEvents = "all";
+    t.style.opacity = "1";
   },
   () => {
-    document.getElementById(
+    let t = document.getElementById(
       "lili_ext_Publish_Helper_renderPublishHelper"
-    ).style.pointerEvents = "none";
-    document.getElementById(
-      "lili_ext_Publish_Helper_renderPublishHelper"
-    ).style.opacity = "0.31";
+    );
+    t.draggable = false;
+    t.style.pointerEvents = "none";
+    t.style.opacity = "0.31";
   }
 );
 API.checkedChange(
@@ -248,31 +246,31 @@ API.checkedChange(
     "SC_winsay_cp_extension_lili_ext_Graph_Helper_renderPublishHelper_enable"
   ),
   () => {
-    document.getElementById(
+    let t = document.getElementById(
       "lili_ext_Graph_Helper_renderPublishHelper"
-    ).style.pointerEvents = "all";
-    document.getElementById(
-      "lili_ext_Graph_Helper_renderPublishHelper"
-    ).style.opacity = "1";
+    );
+    t.draggable = true;
+    t.style.pointerEvents = "all";
+    t.style.opacity = "1";
   },
   () => {
-    document.getElementById(
+    let t = document.getElementById(
       "lili_ext_Graph_Helper_renderPublishHelper"
-    ).style.pointerEvents = "none";
-    document.getElementById(
-      "lili_ext_Graph_Helper_renderPublishHelper"
-    ).style.opacity = "0.31";
+    );
+    t.draggable = false;
+    t.style.pointerEvents = "none";
+    t.style.opacity = "0.31";
   }
 );
 sprite_menu.onmouseover = function (e) {
   var p = e.target;
-  while (!p.classList.contains("b3-menu__item")) {
+  while (!(p.className && p.classList.contains("b3-menu__item"))) {
     p = p.parentNode;
   }
 };
 sprite_menu.addEventListener("click", (e) => {
   var p = e.target;
-  while (!p.classList.contains("b3-menu__item")) {
+  while (!(p.className && p.classList.contains("b3-menu__item"))) {
     p = p.parentNode;
   }
   if (p.id == "lili_ext_Export_Helper_renderPDF") {
@@ -319,14 +317,14 @@ sprite_menu.addEventListener("click", (e) => {
   }
 });
 var sprite_menu_selected_iterm;
-sprite_menu.querySelectorAll(".b3-menu__item").forEach((b) => {
+sprite_menu.querySelectorAll(".lili_sprite_menu__dragP").forEach((b) => {
   b.ondragstart = dragStart;
   b.ondragend = dragEnd;
   b.ondragover = dragOver;
 });
 function dragOver(e) {
   var p = e.target;
-  while (!p.classList.contains("b3-menu__item")) {
+  while (!(p.className && p.classList.contains("lili_sprite_menu__dragP"))) {
     p = p.parentNode;
   }
   //向前拖拽向后拖拽
@@ -344,7 +342,12 @@ function dragEnd() {
 
 function dragStart(e) {
   sprite_menu_selected_iterm = e.target;
-  while (!sprite_menu_selected_iterm.classList.contains("b3-menu__item")) {
+  while (
+    !(
+      sprite_menu_selected_iterm.className &&
+      sprite_menu_selected_iterm.classList.contains("lili_sprite_menu__dragP")
+    )
+  ) {
     sprite_menu_selected_iterm = sprite_menu_selected_iterm.parentNode;
   }
 }

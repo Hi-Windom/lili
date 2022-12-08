@@ -24,4 +24,14 @@
 #sprite_menu .b3-switch {
   box-sizing: content-box;
   margin: 5px 13px;
+  filter: brightness(.91);
+}
+
+#sprite_menu .b3-menu__label {
+  letter-spacing: .31px;
+}
+
+#sprite_menu .b3-menu__label:hover {
+  color: var(--b3-theme-primary);
+  letter-spacing: .31px;
 }
