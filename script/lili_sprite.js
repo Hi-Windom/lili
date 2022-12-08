@@ -1,7 +1,10 @@
 import { renderPDF } from "../extension/Export_Helper/renderPDF.js";
-import { checkedChange } from "../../Sofill-/script/CP.js";
-import * as SC_SVG from "../../Sofill=/eHiWindom/Assets_Manager/SVG_data.js"
-console.log(SC_SVG.D)
+import { renderPublishHelper } from "../extension/Publish_Helper/renderPublishHelper.js";
+import { renderGraphHelper } from "../extension/Graph_Helper/renderGraphHelper.js";
+import * as API from "./../../Sofill-/script/utils/api.min.js";
+import { isFileExisted } from "./utils/liliFuns.js";
+import * as SC_SVG from "../../Sofill=/eHiWindom/Assets_Manager/SVG_data.js";
+console.log(SC_SVG.D);
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
@@ -174,41 +177,91 @@ sprite_menu.style = "max-height: 300px; overflow-y: auto;";
 sprite_menu.innerHTML = `
 <div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable" type="checkbox" checked="">
 <button id="lili_ext_Export_Helper_renderPDF" class="b3-menu__item" draggable="true">
-    <svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
-    <span class="b3-menu__label">导出PDF</span>
-    </button></div>
+<svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
+<span class="b3-menu__label">导出PDF</span>
+</button></div>
+<div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Publish_Helper_renderPublishHelper_enable" type="checkbox" checked="">
+<button id="lili_ext_Publish_Helper_renderPublishHelper" class="b3-menu__item" draggable="true">
+<svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
+<span class="b3-menu__label">发布助手</span>
+</button></div>
 <button class="b3-menu__separator"></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切2</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切3</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切4</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切5</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切6</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切7</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切8</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切9</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__separator"></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切10</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切11</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
-<button class="b3-menu__item" draggable="true"><span class="b3-menu__label">剪切12</span><span class="b3-menu__accelerator">Ctrl+X</span></button>
+<div class="fn__flex"><input class="b3-switch fn__flex-center" id="SC_winsay_cp_extension_lili_ext_Graph_Helper_renderPublishHelper_enable" type="checkbox" checked="">
+<button id="lili_ext_Graph_Helper_renderPublishHelper" class="b3-menu__item" draggable="true">
+<svg class="b3-menu__icon"><use xlink:href="#iconPDF"></use></svg>
+<span class="b3-menu__label">图谱助手</span>
+</button></div>
 `;
 neko_container.appendChild(sprite_menu);
 document.onclick = function (e) {
   var p = e.target;
   while (!p.classList.contains("fn__flex-column")) {
-    if(p.id=="sprite_menu"){return;}
+    if (p.id == "sprite_menu") {
+      return;
+    }
     p = p.parentNode;
   }
   sprite_menu.classList.add("fn__none");
 };
-checkedChange(
-  document.getElementById("SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable"),
+API.checkedChange(
+  document.getElementById(
+    "SC_winsay_cp_extension_lili_ext_Export_Helper_renderPDF_enable"
+  ),
   () => {
-    document.getElementById("lili_ext_Export_Helper_renderPDF").style.pointerEvents = "all";
-    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity = "1";
+    document.getElementById(
+      "lili_ext_Export_Helper_renderPDF"
+    ).style.pointerEvents = "all";
+    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity =
+      "1";
   },
   () => {
-    document.getElementById("lili_ext_Export_Helper_renderPDF").style.pointerEvents = "none";
-    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity = "0.31";
+    document.getElementById(
+      "lili_ext_Export_Helper_renderPDF"
+    ).style.pointerEvents = "none";
+    document.getElementById("lili_ext_Export_Helper_renderPDF").style.opacity =
+      "0.31";
+  }
+);
+API.checkedChange(
+  document.getElementById(
+    "SC_winsay_cp_extension_lili_ext_Publish_Helper_renderPublishHelper_enable"
+  ),
+  () => {
+    document.getElementById(
+      "lili_ext_Publish_Helper_renderPublishHelper"
+    ).style.pointerEvents = "all";
+    document.getElementById(
+      "lili_ext_Publish_Helper_renderPublishHelper"
+    ).style.opacity = "1";
+  },
+  () => {
+    document.getElementById(
+      "lili_ext_Publish_Helper_renderPublishHelper"
+    ).style.pointerEvents = "none";
+    document.getElementById(
+      "lili_ext_Publish_Helper_renderPublishHelper"
+    ).style.opacity = "0.31";
+  }
+);
+API.checkedChange(
+  document.getElementById(
+    "SC_winsay_cp_extension_lili_ext_Graph_Helper_renderPublishHelper_enable"
+  ),
+  () => {
+    document.getElementById(
+      "lili_ext_Graph_Helper_renderPublishHelper"
+    ).style.pointerEvents = "all";
+    document.getElementById(
+      "lili_ext_Graph_Helper_renderPublishHelper"
+    ).style.opacity = "1";
+  },
+  () => {
+    document.getElementById(
+      "lili_ext_Graph_Helper_renderPublishHelper"
+    ).style.pointerEvents = "none";
+    document.getElementById(
+      "lili_ext_Graph_Helper_renderPublishHelper"
+    ).style.opacity = "0.31";
   }
 );
 sprite_menu.onmouseover = function (e) {
@@ -227,6 +280,42 @@ sprite_menu.addEventListener("click", (e) => {
       "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
     ).attributes["data-node-id"].value;
     renderPDF(id);
+  }
+  if (p.id == "lili_ext_Publish_Helper_renderPublishHelper") {
+    isFileExisted(
+      `${window.siyuan.config.system.dataDir}/widgets/sy-post-publisher`
+    ).then((response) => {
+      if (response) {
+        let id = document.querySelector(
+          "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
+        ).attributes["data-node-id"].value;
+        renderPublishHelper(id);
+        console.log("ok");
+        resolve(true);
+      } else {
+        new Notification("挂件未安装", {
+          body: "请先在集市下载 sy-post-publisher 挂件",
+        }).onclick = () => console.log("Notification clicked!");
+      }
+    });
+  }
+  if (p.id == "lili_ext_Graph_Helper_renderPublishHelper") {
+    isFileExisted(`${window.siyuan.config.system.dataDir}/widgets/Graph`).then(
+      (response) => {
+        if (response) {
+          let id = document.querySelector(
+            "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
+          ).attributes["data-node-id"].value;
+          renderGraphHelper(id);
+          console.log("ok");
+          resolve(true);
+        } else {
+          new Notification("挂件未安装", {
+            body: "请先在集市下载 Graph 挂件",
+          }).onclick = () => console.log("Notification clicked!");
+        }
+      }
+    );
   }
 });
 var sprite_menu_selected_iterm;
