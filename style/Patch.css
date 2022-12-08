@@ -23,4 +23,5 @@
 
 #sprite_menu .b3-switch {
   box-sizing: content-box;
+  margin: 5px 13px;
 }
