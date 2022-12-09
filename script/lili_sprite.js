@@ -309,7 +309,6 @@ sprite_menu.addEventListener("click", (e) => {
         ).attributes["data-node-id"].value;
         renderPublishHelper(id);
         console.log("ok");
-        resolve(true);
       } else {
         new Notification("挂件未安装", {
           body: "请先在集市下载 sy-post-publisher 挂件",
@@ -326,7 +325,6 @@ sprite_menu.addEventListener("click", (e) => {
           ).attributes["data-node-id"].value;
           renderGraphHelper(id);
           console.log("ok");
-          resolve(true);
         } else {
           new Notification("挂件未安装", {
             body: "请先在集市下载 Graph 挂件",
