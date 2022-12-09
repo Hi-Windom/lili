@@ -68,11 +68,13 @@ function action(obj) {
   }
 }
 neko.ondblclick = function (e) {
-  document.getElementById("SC-CP").style.display = "block";
+  let obj = document.getElementById("SC-CP");
+  obj ? (obj.style.display = "block") : null;
 };
 neko.onmousedown = function (e) {
   var nekoL = e.clientX - neko.offsetLeft;
   var nekoT = e.clientY - neko.offsetTop;
+  var obj = document.getElementById("SC-CP");
   document.onmousemove = function (e) {
     cuntW = 0;
     cuntH = 0;
@@ -99,7 +101,7 @@ neko.onmousedown = function (e) {
   } else if (e.button == 2) {
     console.log("鼠标右键!");
     if (
-      document.querySelector("#SC-CP").style.display != "none" ||
+      (obj && obj.style.display != "none") ||
       document.querySelectorAll(".b3-dialog__scrim").length > 1
     )
       return;
