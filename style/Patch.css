@@ -15,10 +15,11 @@
 }
 
 .neko-side {
-  background: var(--b3-theme-on-background) !important;
+  background: var(--b3-theme-secondary) !important;
   border-radius: 31px !important;
   width: 8px !important;
-  border: 1px solid var(--b3-theme-secondary) !important;
+  border: 0px solid var(--b3-theme-secondary) !important;
+  animation: none !important;
 }
 
 #sprite_menu {

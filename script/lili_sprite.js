@@ -68,11 +68,13 @@ function action(obj) {
   }
 }
 neko.ondblclick = function (e) {
-  document.getElementById("SC-CP").style.display = "block";
+  let obj = document.getElementById("SC-CP");
+  obj ? (obj.style.display = "block") : null;
 };
 neko.onmousedown = function (e) {
   var nekoL = e.clientX - neko.offsetLeft;
   var nekoT = e.clientY - neko.offsetTop;
+  var obj = document.getElementById("SC-CP");
   document.onmousemove = function (e) {
     cuntW = 0;
     cuntH = 0;
@@ -99,7 +101,7 @@ neko.onmousedown = function (e) {
   } else if (e.button == 2) {
     console.log("鼠标右键!");
     if (
-      document.querySelector("#SC-CP").style.display != "none" ||
+      (obj && obj.style.display != "none") ||
       document.querySelectorAll(".b3-dialog__scrim").length > 1
     )
       return;
@@ -297,19 +299,16 @@ sprite_menu.addEventListener("click", (e) => {
     p = p.parentNode;
   }
   if (p.id == "lili_ext_Export_Helper_renderPDF") {
-    renderPDF(API.getFocusedDocID());
+    let id = API.getFocusedDocID();
+    id ? renderPDF() : API.通知("未获取到文档，请检查");
   }
   if (p.id == "lili_ext_Publish_Helper_renderPublishHelper") {
     isFileExisted(
       `${window.siyuan.config.system.dataDir}/widgets/sy-post-publisher`
     ).then((response) => {
       if (response) {
-        let id = document.querySelector(
-          "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
-        ).attributes["data-node-id"].value;
-        renderPublishHelper(id);
+        renderPublishHelper(API.getFocusedDocID());
         console.log("ok");
-        resolve(true);
       } else {
         new Notification("挂件未安装", {
           body: "请先在集市下载 sy-post-publisher 挂件",
@@ -326,7 +325,6 @@ sprite_menu.addEventListener("click", (e) => {
           ).attributes["data-node-id"].value;
           renderGraphHelper(id);
           console.log("ok");
-          resolve(true);
         } else {
           new Notification("挂件未安装", {
             body: "请先在集市下载 Graph 挂件",
