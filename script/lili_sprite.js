@@ -299,17 +299,15 @@ sprite_menu.addEventListener("click", (e) => {
     p = p.parentNode;
   }
   if (p.id == "lili_ext_Export_Helper_renderPDF") {
-    renderPDF(API.getFocusedDocID());
+    let id = API.getFocusedDocID();
+    id ? renderPDF() : API.通知("未获取到文档，请检查");
   }
   if (p.id == "lili_ext_Publish_Helper_renderPublishHelper") {
     isFileExisted(
       `${window.siyuan.config.system.dataDir}/widgets/sy-post-publisher`
     ).then((response) => {
       if (response) {
-        let id = document.querySelector(
-          "#layouts .layout__center .protyle .protyle-background.protyle-background--enable"
-        ).attributes["data-node-id"].value;
-        renderPublishHelper(id);
+        renderPublishHelper(API.getFocusedDocID());
         console.log("ok");
       } else {
         new Notification("挂件未安装", {
