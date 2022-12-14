@@ -4,7 +4,6 @@ import { renderGraphHelper } from "../extension/Graph_Helper/renderGraphHelper.j
 import * as API from "./../../Sofill-/script/utils/api.min.js";
 import { isFileExisted } from "./utils/liliFuns.js";
 import * as SC_SVG from "../../Sofill=/eHiWindom/Assets_Manager/SVG_data.js";
-console.log(SC_SVG.D);
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
@@ -300,7 +299,7 @@ sprite_menu.addEventListener("click", (e) => {
   }
   if (p.id == "lili_ext_Export_Helper_renderPDF") {
     let id = API.getFocusedDocID();
-    id ? renderPDF() : API.通知("未获取到文档，请检查");
+    id ? renderPDF(id) : API.通知("未获取到文档，请检查");
   }
   if (p.id == "lili_ext_Publish_Helper_renderPublishHelper") {
     isFileExisted(
