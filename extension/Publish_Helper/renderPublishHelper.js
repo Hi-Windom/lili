@@ -38,64 +38,74 @@ export const renderPublishHelper = (id) => {
       window.siyuan.config.system.kernelVersion
     }"/>`;
   }
-  const html = `<!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <link rel="icon" type="image/svg+xml" href="http://127.0.0.1:6806/widgets/sy-post-publisher/vite.svg" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>多平台文章发布-思源笔记发布辅助工具</title>
-      <script type="module" crossorigin src="http://127.0.0.1:6806/widgets/sy-post-publisher/static/js/css-vars-a4009a69.js"></script>
-      <script type="module" crossorigin src="http://127.0.0.1:6806/widgets/sy-post-publisher/static/js/PublishService.vue_vue_type_script_setup_true_lang-336491e2.js"></script>
-      <script type="module" crossorigin src="http://127.0.0.1:6806/widgets/sy-post-publisher/static/js/main-de586f65.js"></script>
-      <link rel="stylesheet" href="http://127.0.0.1:6806/widgets/sy-post-publisher/static/css/css-vars-ca87ad39.css">
-      <link rel="stylesheet" href="http://127.0.0.1:6806/widgets/sy-post-publisher/static/css/PublishService-00dd44bb.css">
-      <link rel="stylesheet" href="http://127.0.0.1:6806/widgets/sy-post-publisher/static/css/main-4a466eb3.css">
-      <style>
-      #app {
-        height: 100vh !important;
-        padding-top: 13px !important;
-        box-sizing: border-box;
+  // var html = `<!DOCTYPE html>
+  // <html lang="en">
+  //   <head>
+  //     <meta charset="UTF-8" />
+  //     <link rel="icon" type="image/svg+xml" href="http://127.0.0.1:6806/widgets/sy-post-publisher/vite.svg" />
+  //     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  //     <title>多平台文章发布-思源笔记发布辅助工具</title>
+  //     <script type="module" crossorigin src="http://127.0.0.1:6806/widgets/sy-post-publisher/static/js/css-vars-a4009a69.js"></script>
+  //     <script type="module" crossorigin src="http://127.0.0.1:6806/widgets/sy-post-publisher/static/js/PublishService.vue_vue_type_script_setup_true_lang-336491e2.js"></script>
+  //     <script type="module" crossorigin src="http://127.0.0.1:6806/widgets/sy-post-publisher/static/js/main-de586f65.js"></script>
+  //     <link rel="stylesheet" href="http://127.0.0.1:6806/widgets/sy-post-publisher/static/css/css-vars-ca87ad39.css">
+  //     <link rel="stylesheet" href="http://127.0.0.1:6806/widgets/sy-post-publisher/static/css/PublishService-00dd44bb.css">
+  //     <link rel="stylesheet" href="http://127.0.0.1:6806/widgets/sy-post-publisher/static/css/main-4a466eb3.css">
+  //     <style>
+  //     #app {
+  //       height: 100vh !important;
+  //       padding-top: 13px !important;
+  //       box-sizing: border-box;
+  //     }
+  //     </style>
+  //   </head>
+  //   <body>
+  //     <div id="app"></div>
+  //     <script src="http://127.0.0.1:6806/widgets/sy-post-publisher/lute.min.js"></script>
+  //   </body>
+  // </html>
+  // `;
+  new Promise(function(html) {
+    fs.readFile(`${window.siyuan.config.system.dataDir}/widgets/sy-post-publisher/index.html`,function(err,data){
+      if(err){
+          console.log(err)
       }
-      </style>
-    </head>
-    <body>
-      <div id="app"></div>
-      <script src="http://127.0.0.1:6806/widgets/sy-post-publisher/lute.min.js"></script>
-    </body>
-  </html>
-  `;
-  const mainWindow = getCurrentWindow();
-  window.siyuan.printWin = new BrowserWindow({
-    parent: mainWindow,
-    modal: true,
-    show: true,
-    width: 900,
-    height: 680,
-    resizable: true,
-    frame: true,
-    icon: path.join(
-      window.siyuan.config.system.appDir,
-      "stage",
-      "icon-large.png"
-    ),
-    titleBarStyle: "default",
-    titleBarOverlay: {
-      color: "#cccccca5",
-      symbolColor: "black",
-  },
-    webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
-      webviewTag: true,
-      webSecurity: false,
+      var txt = data.toString().replace(/<!--.*-->/gs,"");
+      html(txt);
+  })
+  }).then(function(html){
+    const mainWindow = getCurrentWindow();
+    window.siyuan.printWin = new BrowserWindow({
+      parent: mainWindow,
+      modal: true,
+      show: true,
+      width: 900,
+      height: 680,
+      resizable: true,
+      frame: true,
+      icon: path.join(
+        window.siyuan.config.system.appDir,
+        "stage",
+        "icon-large.png"
+      ),
+      titleBarStyle: "default",
+      titleBarOverlay: {
+        color: "#cccccca5",
+        symbolColor: "black",
     },
-  });
-  window.siyuan.printWin.webContents.userAgent = `SiYuan/${app.getVersion()} https://b3log.org/siyuan Electron`;
-  window.siyuan.printWin.once("ready-to-show", () => {
-    window.siyuan.printWin.webContents.setZoomFactor(1);
-  });
-  fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
-    window.siyuan.printWin.loadURL(response.data.url);
-  });
+      webPreferences: {
+        contextIsolation: false,
+        nodeIntegration: true,
+        webviewTag: true,
+        webSecurity: false,
+      },
+    });
+    window.siyuan.printWin.webContents.userAgent = `SiYuan/${app.getVersion()} https://b3log.org/siyuan Electron`;
+    window.siyuan.printWin.once("ready-to-show", () => {
+      window.siyuan.printWin.webContents.setZoomFactor(1);
+    });
+    fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
+      window.siyuan.printWin.loadURL(response.data.url);
+    });
+  })
 };

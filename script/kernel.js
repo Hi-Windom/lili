@@ -12,8 +12,7 @@ if (
         .getElementsByTagName("body")[0]
         .classList.contains("body--desktop")
     ? false
-    : window.siyuan.config.system.os == "windows" ||
-      window.siyuan.config.system.os == "darwin"
+    : window.siyuan.config.system.os == "windows"
     ? true
     : false
 ) {

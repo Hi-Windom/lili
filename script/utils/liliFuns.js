@@ -93,6 +93,10 @@ export const fetchPost = (url, data, cb, headers) => {
     });
 };
 
+export const replaceLocalPath = (name) => {
+  return name.replace(/\\\\|\/|"|:|\*|\?|\\|'|<|>|\|/g, "");
+};
+
 export async function isFileExisted(path_way) {
   return new Promise((response) => {
     fs
