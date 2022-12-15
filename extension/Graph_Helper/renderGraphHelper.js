@@ -130,7 +130,7 @@ export const renderGraphHelper = (id) => {
       "stage",
       "icon-large.png"
     ),
-    titleBarStyle: "default",
+    titleBarStyle: "hidden",
     titleBarOverlay: {
       color: "#cccccca5",
       symbolColor: "black",
@@ -150,4 +150,22 @@ export const renderGraphHelper = (id) => {
   fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
     window.siyuan.printWin.loadURL(response.data.url);
   });
+  window.siyuan.printWin.webContents.on('dom-ready', ()=>{
+    window.siyuan.printWin.webContents.executeJavaScript(`
+    const waitForExternal = setInterval(()=>{
+      if(document.getElementById("mountNode")) {
+        clearInterval(waitForExternal);
+        var btn = document.createElement("button");
+        btn.innerHTML = " ${window.siyuan.languages.cancel} ";
+        btn.className = "b3-button b3-button--cancel";
+        btn.id = "btn-cancel";
+        document.getElementById("mountNode").insertAdjacentElement("afterbegin",btn);
+        document.querySelector('#btn-cancel').addEventListener('click', () => {
+          const {ipcRenderer}  = require("electron");
+          ipcRenderer.send("siyuan-export-close")
+      });
+      }
+    }, 300);
+    `, false, (result)=>console.log("1")).then((result)=>console.log("2"));
+  })
 };

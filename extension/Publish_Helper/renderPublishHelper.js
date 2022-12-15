@@ -84,11 +84,12 @@ export const renderPublishHelper = (id) => {
       resizable: true,
       frame: true,
       icon: path.join(
-        window.siyuan.config.system.appDir,
-        "stage",
-        "icon-large.png"
+        window.siyuan.config.system.dataDir,
+        "widgets",
+        "sy-post-publisher",
+        "favicon.ico"
       ),
-      titleBarStyle: "default",
+      titleBarStyle: "hidden",
       titleBarOverlay: {
         color: "#cccccca5",
         symbolColor: "black",
@@ -107,5 +108,23 @@ export const renderPublishHelper = (id) => {
     fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
       window.siyuan.printWin.loadURL(response.data.url);
     });
+    window.siyuan.printWin.webContents.on('dom-ready', ()=>{
+      window.siyuan.printWin.webContents.executeJavaScript(`
+      const waitForExternal = setInterval(()=>{
+        if(document.getElementById("app")) {
+          clearInterval(waitForExternal);
+          var btn = document.createElement("button");
+          btn.innerHTML = " ${window.siyuan.languages.cancel} ";
+          btn.className = "b3-button b3-button--cancel";
+          btn.id = "btn-cancel";
+          document.getElementById("app").insertAdjacentElement("afterbegin",btn);
+          document.querySelector('#btn-cancel').addEventListener('click', () => {
+            const {ipcRenderer}  = require("electron");
+            ipcRenderer.send("siyuan-export-close")
+        });
+        }
+      }, 300);
+      `, false, (result)=>console.log("1")).then((result)=>console.log("2"));
+    })
   })
 };
