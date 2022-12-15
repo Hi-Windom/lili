@@ -11,12 +11,6 @@ const {
   ipcMain,
 } = require("@electron/remote");
 
-ipcMain.on("siyuan-export-pdf-lili", (event, data) => {
-  if (!window.siyuan.printWin) {return;}
-  const mainWindow = getCurrentWindow();
-  mainWindow.webContents.send("siyuan-export-pdf-lili", data);
-});
-
 
 let originalZoomFactor = 1;
 export const renderPDF = (id) => {
@@ -573,6 +567,11 @@ export const renderPDF = (id) => {
   });
   fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
     window.siyuan.printWin.loadURL(response.data.url);
+  });
+  ipcMain.once("siyuan-export-pdf-lili", (event, data) => {
+    if (!window.siyuan.printWin) {return;}
+    const mainWindow = getCurrentWindow();
+    mainWindow.webContents.send("siyuan-export-pdf-lili", data);
   });
   ipcRenderer.once("siyuan-export-pdf-lili", (e, ipcData) => {
     dialog
