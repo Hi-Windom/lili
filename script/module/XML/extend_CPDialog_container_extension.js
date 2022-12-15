@@ -1,5 +1,356 @@
-export {CP_container_extension};
-var CP_container_extension = `
-<div class="fn__flex-column" style="height: 100%"><div class="layout-tab-bar fn__flex" style="position: sticky;top: 0;z-index: 3;"><div data-type="theme" class="item item--full item--focus"><span class="fn__flex-1"></span><span class="item__text">主题</span><span class="fn__flex-1"></span></div><div data-type="template" class="item item--full"><span class="fn__flex-1"></span><span class="item__text">模板</span><span class="fn__flex-1"></span></div><div data-type="icon" class="item item--full"><span class="fn__flex-1"></span><span class="item__text">图标</span><span class="fn__flex-1"></span></div><div data-type="widget" class="item item--full"><span class="fn__flex-1"></span><span class="item__text">挂件</span><span class="fn__flex-1"></span></div><div data-type="downloaded" class="item item--full"><span class="fn__flex-1"></span><span class="item__text">已下载</span><span class="fn__flex-1"></span></div></div><div class="fn__flex-1"><div data-type="theme" class="bazaarPanel" data-init="true"><div class="fn__hr"></div><div class="fn__flex fn__flex-wrap"><div class="fn__space"></div><div class="fn__space"></div><svg class="svg ft__on-surface fn__flex-center"><use xlink:href="#iconSort"></use></svg><div class="fn__space"></div><select class="b3-select fn__size200"><option selected="" value="0">更新时间降序</option><option value="1">更新时间升序</option><option value="2">下载次数降序</option><option value="3">下载次数升序</option></select><div class="fn__flex-1"></div><select id="bazaarSelect" class="b3-select fn__size200"><option selected="" value="2">全部</option><option value="0">明亮</option><option value="1">暗黑</option></select><div class="fn__space"></div><div class="fn__space"></div></div><div id="configBazaarTheme"><div class="b3-cards"><div data-bazaar="themes" class="b3-card b3-card--current" data-type="light,dark" data-updated="2022-12-05T19:00:52Z"><div class="b3-card__img"><img src="https://oss.b3logfile.com/package/Hi-Windom/winsay@16681e3e195d2d8b4eb366843dc0ee1f907e2c8d/preview.png?imageView2/2/w/436/h/232"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">Sofill-</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">2035</span></div><div class="b3-card__actions" data-name="Sofill-" data-url="https://github.com/Hi-Windom/winsay" data-hash="16681e3e195d2d8b4eb366843dc0ee1f907e2c8d"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space fn__none"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div><div data-bazaar="themes" class="b3-card" data-type="light" data-updated="2022-12-05T13:00:03Z"><div class="b3-card__img"><img src="/appearance/themes/Sofill=/eHiWindom/Software_Manager/preview.png"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">HBuilderX-Light</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">3105</span></div><div class="b3-card__actions" data-name="HBuilderX-Light" data-url="https://github.com/UFDXD/HBuilderX-Light" data-hash="0ed9c14d5d8213d89b941ee9d100bec4a6a89ef5"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div><div data-bazaar="themes" class="b3-card" data-type="light,dark" data-updated="2022-12-05T12:50:33Z"><div class="b3-card__img"><img src="/appearance/themes/Sofill=/eHiWindom/Fonts_Manager/preview.png"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">Savor</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">24382</span></div><div class="b3-card__actions" data-name="Savor" data-url="https://github.com/royc01/notion-theme" data-hash="159fa31168c98ec67663f415149768082b330b9f"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space fn__none"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div><div data-bazaar="themes" class="b3-card" data-type="dark,light" data-updated="2022-12-05T05:08:24Z"><div class="b3-card__img"><img src="/appearance/themes/Sofill=/eHiWindom/Assets_Manager/preview.png"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">Dark+</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">20777</span></div><div class="b3-card__actions" data-name="Dark+" data-url="https://github.com/Zuoqiu-Yingyi/siyuan-theme-dark-plus" data-hash="f559656278fe9e65c41903cf5615bf1504f71652"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space fn__none"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div><div data-bazaar="themes" class="b3-card" data-type="dark,light" data-updated="2022-11-29T16:50:43Z"><div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/DocTab_Helper/preview.png"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">Rem Craft</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">7965</span></div><div class="b3-card__actions" data-name="Rem Craft" data-url="https://github.com/svchord/Rem-Craft" data-hash="de08445523c22f1eddaf4800ea068fd4301033ef"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space fn__none"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div><div data-bazaar="themes" class="b3-card" data-type="dark,light" data-updated="2022-11-21T02:53:06Z"><div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/Export_Helper/preview.png"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">mini-vlook</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">3271</span></div><div class="b3-card__actions" data-name="mini-vlook" data-url="https://github.com/idea-zone/mini-vlook" data-hash="ea28261f3e03d0f325dca9bd1184562dcf7c3751"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space fn__none"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div><div data-bazaar="themes" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z"><div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/Fusion_Helper/preview.png"></div><div class="b3-card__info fn__flex"><span class="fn__flex-center fn__ellipsis">pink-room</span><span class="fn__space"></span><span class="fn__flex-1"></span><svg class="svg fn__flex-center"><use xlink:href="#iconDownload"></use></svg><span class="fn__space"></span><span class="fn__flex-center">1039</span></div><div class="b3-card__actions" data-name="pink-room" data-url="https://github.com/StarDustSheep/pink-room" data-hash="cadc315b7976701e03df79415fb16d7a386320aa"><div class="fn__flex-1"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="uninstall" aria-label="卸载"><svg><use xlink:href="#iconTrashcan"></use></svg></span><div class="fn__space fn__none"></div><span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="switch" aria-label="使用"><svg><use xlink:href="#iconSelect"></use></svg></span><div class="fn__space fn__none"></div><span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" aria-label="更新"><svg class="ft__primary"><use xlink:href="#iconRefresh"></use></svg></span></div></div></div></div></div><div class="fn__none bazaarPanel" data-type="template"><div class="fn__hr"></div><div class="fn__flex"><div class="fn__space"></div><div class="fn__space"></div><svg class="svg ft__on-surface fn__flex-center"><use xlink:href="#iconSort"></use></svg><div class="fn__space"></div><select class="b3-select fn__size200"><option selected="" value="0">更新时间降序</option><option value="1">更新时间升序</option><option value="2">下载次数降序</option><option value="3">下载次数升序</option></select></div><div id="configBazaarTemplate"><div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img src="/stage/loading-pure.svg"></div></div></div><div class="fn__none bazaarPanel" data-type="icon"><div class="fn__hr"></div><div class="fn__flex"><div class="fn__space"></div><div class="fn__space"></div><svg class="svg ft__on-surface fn__flex-center"><use xlink:href="#iconSort"></use></svg><div class="fn__space"></div><select class="b3-select fn__size200"><option selected="" value="0">更新时间降序</option><option value="1">更新时间升序</option><option value="2">下载次数降序</option><option value="3">下载次数升序</option></select></div><div id="configBazaarIcon"><div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img src="/stage/loading-pure.svg"></div></div></div><div class="fn__none bazaarPanel" data-type="widget"><div class="fn__hr"></div><div class="fn__flex"><div class="fn__space"></div><div class="fn__space"></div><svg class="svg ft__on-surface fn__flex-center"><use xlink:href="#iconSort"></use></svg><div class="fn__space"></div><select class="b3-select fn__size200"><option selected="" value="0">更新时间降序</option><option value="1">更新时间升序</option><option value="2">下载次数降序</option><option value="3">下载次数升序</option></select></div><div id="configBazaarWidget"><div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img src="/stage/loading-pure.svg"></div></div></div><div class="bazaarPanel fn__none" data-type="downloaded"><div class="fn__hr"></div><div class="fn__flex"><div class="fn__space"></div><div class="fn__space"></div><button data-type="myTheme" class="b3-button">主题</button><div class="fn__space"></div><button data-type="myTemplate" class="b3-button b3-button--outline">模板</button><div class="fn__space"></div><button data-type="myIcon" class="b3-button b3-button--outline">图标</button><div class="fn__space"></div><button data-type="myWidget" class="b3-button b3-button--outline">挂件</button></div><div id="configBazaarDownloaded"><div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img src="/stage/loading-pure.svg"></div></div></div></div><div id="configBazaarReadme" class="config-bazaar__readme" style="right: 0px;"><div class="item__side" style=" max-height: 100%; box-sizing: border-box;
-"><div class="fn__flex"><button class="b3-button b3-button--outline" data-type="goBack" title="Go back"><svg><use xlink:href="#iconLeft"></use></svg></button><div class="item__nav">暗黑 主题</div></div><div class="fn__flex SC_mall_badge_container" style="justify-content: center;flex-wrap: wrap;"><img alt="" src="https://img.shields.io/badge/-%E4%BA%BA%E5%B7%A5%E4%BA%B2%E6%B5%8B-black?logo=AdGuard"><img alt="" src="https://img.shields.io/badge/-%E5%BC%80%E6%BA%90%E5%AE%A1%E6%A0%B8-131?logo=Git"><img alt="" src="https://img.shields.io/badge/-%E6%AD%A3%E7%89%88%E6%8E%88%E6%9D%83-black?logo=Google Fit"><img alt="" src="https://img.shields.io/badge/-%E5%AE%98%E6%96%B9%E5%87%BA%E5%93%81-black?logo=Opsgenie"></div><a href="https://github.com/Hi-Windom/winsay" target="_blank" class="item__title" title="GitHub Repo">Sofill-</a><div class="fn__hr--b"></div><div class="fn__hr--b"></div><div style="line-height: 20px;"><span class="ft__smaller">Made with ❤️ by</span><br><a href="https://github.com/Hi-Windom" target="_blank" title="Creator">Soltus</a></div><div class="fn__hr--b"></div><div class="fn__hr--b"></div><div class="fn__hr"></div><div class="fn__hr"></div><div class="fn__hr--b"></div><div data-type="light,dark"><button class="b3-button" style="width: 168px" data-hash="16681e3e195d2d8b4eb366843dc0ee1f907e2c8d" data-name="Sofill-" data-bazaar="themes" data-url="https://github.com/Hi-Windom/winsay" data-type="install">下载</button></div></div><div class="item__main"><div class="item__preview" style="background-image: url(https://oss.b3logfile.com/package/Hi-Windom/winsay@16681e3e195d2d8b4eb366843dc0ee1f907e2c8d/preview.png?imageslim)"></div><div class="item__readme b3-typography b3-typography--default" style="position:relative;"><h1>🪁 Sofill-主题：内部代号 [ winsay ]（风颂）</h1><p align="center"><img src="https://img.shields.io/pypi/l/color-theme-analyse.svg" alt="License"><a href="https://github.com/Hi-Windom/winsay/releases"><img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/Hi-Windom/winsay?include_prereleases"><img alt="GitHub (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Hi-Windom/winsay"></a><a href="https://github.com/Hi-Windom/winsay/issues?q=is%3Aopen+is%3Aissue"><img alt="GitHub open issues" src="https://img.shields.io/github/issues-raw/Hi-Windom/winsay"></a><a href="https://github.com/Hi-Windom/winsay/issues?q=is%3Aissue+is%3Aclosed"><img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/Hi-Windom/winsay"></a><a href="https://github.com/Hi-Windom/winsay/commits/main"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Hi-Windom/winsay"></a><a href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=694357845&amp;website=www.oicqzone.com"><img src="https://img.shields.io/badge/QQ-694357845-orange"></a></p><h2>🎈 鸣谢</h2><p>Sofill 系列主题的诞生与成长离不开下列开源项目的贡献，以及热心网友的反馈和建议。</p><h3>思源社区</h3><p><a href="https://github.com/siyuan-note/siyuan">思源笔记</a></p><p>参考主题：（排名不分先后）</p><ul><li><a href="https://github.com/UserZYF/OneNote">OneNote</a></li><li><a href="https://github.com/Zuoqiu-Yingyi/siyuan-theme-dark-plus">Dark+</a></li><li><a href="https://github.com/UserZYF/zhang-light">Zhang-Light</a></li><li><a href="https://github.com/UserZYF/Chrome-A4">Chrome-A4</a></li><li><a href="https://github.com/StarDustSheep/pink-room">pink-room</a></li><li><a href="https://github.com/royc01/notion-theme">Savor</a></li><li><a href="https://github.com/UserZYF/blue-dog">blue-dog</a></li><li><a href="https://github.com/Morganwan90/Darkblue-siyuan-theme">Dark-Blue</a></li></ul><h3>资源</h3><p>字体：（排名不分先后）</p><ul><li><a href="https://github.com/atelier-anchor/smiley-sans">得意黑 Smiley Sans：一款在人文观感和几何特征中寻找平衡的中文黑体</a></li></ul><p>图片：（排名不分先后）</p><ul><li><a href="https://icon-icons.com/zh/">icon-icons.com</a></li><li><a href="https://www.iconfont.cn/">iconfont</a></li></ul><h2>💎 特别鸣谢</h2><ul><li><a href="https://www.vivo.com.cn/originos">OriginOS</a></li><li><a href="https://shouji.sogou.com/?r=ime">搜狗输入法手机版</a></li></ul><h1>🌐 开源声明</h1><ol><li>Sofill 系列主题均可免费使用和基于交流学习的无限制修改</li><li>基于 Sofill 系列主题二次创作的作品不得在未获得原作者团队授权的情况下擅自在思源集市或者其他渠道公开发行</li></ol><hr><p style="text-align:center">- The End -</p></div></div></div></div>
+export const CP_container_extension = `
+<div class="fn__flex-column" style="height: 100%">
+  <div class="layout-tab-bar fn__flex" style="position: sticky;top: 0;z-index: 3;">
+    <div data-type="S3" class="item item--full">
+      <span class="fn__flex-1"></span>
+      <span class="item__text">主题形态</span>
+      <span class="fn__flex-1"></span>
+    </div>
+    <div data-type="template" class="item item--full">
+      <span class="fn__flex-1"></span>
+      <span class="item__text">模板</span>
+      <span class="fn__flex-1"></span>
+    </div>
+    <div data-type="icon" class="item item--full">
+      <span class="fn__flex-1"></span>
+      <span class="item__text">图标</span>
+      <span class="fn__flex-1"></span>
+    </div>
+    <div data-type="plugin" class="item item--full">
+      <span class="fn__flex-1"></span>
+      <span class="item__text">插件</span>
+      <span class="fn__flex-1"></span>
+    </div>
+    <div data-type="downloaded" class="item item--full">
+      <span class="fn__flex-1"></span>
+      <span class="item__text">已启用</span>
+      <span class="fn__flex-1"></span>
+    </div>
+  </div>
+  <div class="fn__flex-1">
+    <div class="bazaarPanel" data-type="S3">
+      <div class="fn__hr"></div>
+      <div id="configBazaarS3">
+        <div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img
+          src="/stage/loading-pure.svg"></div>
+      </div>
+    </div>
+    <div class="fn__none bazaarPanel" data-type="template">
+      <div class="fn__hr"></div>
+      <div id="configBazaarTemplate">
+        <div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img
+            src="/stage/loading-pure.svg"></div>
+      </div>
+    </div>
+    <div class="fn__none bazaarPanel" data-type="icon">
+      <div class="fn__hr"></div>
+      <div id="configBazaarIcon">
+        <div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img
+            src="/stage/loading-pure.svg"></div>
+      </div>
+    </div>
+    <div class="fn__none bazaarPanel" data-type="plugin">
+      <div class="fn__hr"></div>
+      <div id="configBazaarPlugin">
+        <div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img
+            src="/stage/loading-pure.svg"></div>
+      </div>
+    </div>
+    <div class="bazaarPanel fn__none" data-type="downloaded">
+      <div class="fn__hr"></div>
+      <div class="fn__flex">
+        <div class="fn__space"></div>
+        <div class="fn__space"></div>
+        <button data-type="myS3" class="b3-button">主题形态</button>
+        <div class="fn__space"></div>
+        <button data-type="myTemplate" class="b3-button b3-button--outline">模板</button>
+        <div class="fn__space"></div>
+        <button data-type="myIcon" class="b3-button b3-button--outline">图标</button>
+        <div class="fn__space"></div>
+        <button data-type="myPlugin" class="b3-button b3-button--outline">插件</button>
+      </div>
+      <div id="configBazaarDownloaded">
+        <div style="height: 477px;display: flex;align-items: center;justify-content: center;"><img
+            src="/stage/loading-pure.svg"></div>
+      </div>
+    </div>
+  </div>
+  <div id="configBazaarReadme" class="config-bazaar__readme" style="right: -100%;">
+    <div class="item__side" style="
+    max-height: 100%;
+    box-sizing: border-box;
+">
+      <div class="fn__flex"><button class="b3-button b3-button--outline" data-type="goBack" title="Go back"><svg>
+            <use xlink:href="#iconLeft"></use>
+          </svg></button>
+        <div class="item__nav">暗黑 主题</div>
+      </div>
+      <div class="fn__flex SC_mall_badge_container" style="justify-content: center;flex-wrap: wrap;"><img alt=""
+          src="https://img.shields.io/badge/-%E4%BA%BA%E5%B7%A5%E4%BA%B2%E6%B5%8B-black?logo=AdGuard"><img alt=""
+          src="https://img.shields.io/badge/-%E5%BC%80%E6%BA%90%E5%AE%A1%E6%A0%B8-131?logo=Git"><img alt=""
+          src="https://img.shields.io/badge/-%E6%AD%A3%E7%89%88%E6%8E%88%E6%9D%83-black?logo=Google Fit"><img alt=""
+          src="https://img.shields.io/badge/-%E5%AE%98%E6%96%B9%E5%87%BA%E5%93%81-black?logo=Opsgenie"></div><a
+        href="https://github.com/Hi-Windom/winsay" target="_blank" class="item__title" title="GitHub Repo">Sofill-</a>
+      <div class="fn__hr--b"></div>
+      <div class="fn__hr--b"></div>
+      <div style="line-height: 20px;"><span class="ft__smaller">Made with ❤️ by</span><br><a
+          href="https://github.com/Hi-Windom" target="_blank" title="Creator">Soltus</a></div>
+      <div class="fn__hr--b"></div>
+      <div class="fn__hr--b"></div>
+      <div class="fn__hr"></div>
+      <div class="fn__hr"></div>
+      <div class="fn__hr--b"></div>
+      <div data-type="light,dark"><button class="b3-button" style="width: 168px"
+          data-hash="16681e3e195d2d8b4eb366843dc0ee1f907e2c8d" data-name="Sofill-" data-bazaar="S3"
+          data-url="https://github.com/Hi-Windom/winsay" data-type="install">下载</button></div>
+    </div>
+    <div class="item__main">
+      <div class="item__preview"
+        style="background-image: url(https://oss.b3logfile.com/package/Hi-Windom/winsay@16681e3e195d2d8b4eb366843dc0ee1f907e2c8d/preview.png?imageslim)">
+      </div>
+      <div class="item__readme b3-typography b3-typography--default" style="position:relative;">
+      </div>
+    </div>
+  </div>
+</div>
+`
+
+export const configBazaarS3 = `
+<div class="b3-cards">
+<div data-bazaar="S3" data-name="winsay" class="b3-card b3-card--current" data-type="light,dark"
+  data-updated="2022-12-05T19:00:52Z">
+  <div class="b3-card__img"><img
+      src="https://oss.b3logfile.com/package/Hi-Windom/winsay@16681e3e195d2d8b4eb366843dc0ee1f907e2c8d/preview.png?imageView2/2/w/436/h/232">
+  </div>
+  <div class="b3-card__info fn__flex">
+    <span class="fn__flex-center fn__ellipsis">Sofill-形态</span>
+    <span class="fn__space"></span>
+    <span class="fn__flex-1"></span>
+    <svg class="svg fn__flex-center">
+      <use xlink:href="#iconDownload"></use>
+    </svg>
+    <span class="fn__space"></span>
+    <span class="fn__flex-center">2035</span>
+  </div>
+  <div class="b3-card__actions" data-name="Sofill-" data-url="https://github.com/Hi-Windom/winsay"
+    data-hash="16681e3e195d2d8b4eb366843dc0ee1f907e2c8d">
+    <div class="fn__flex-1"></div>
+    <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall"
+      aria-label="卸载">
+      <svg>
+        <use xlink:href="#iconTrashcan"></use>
+      </svg>
+    </span>
+    <div class="fn__space fn__none"></div>
+    <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="switch"
+      aria-label="使用">
+      <svg>
+        <use xlink:href="#iconSelect"></use>
+      </svg>
+    </span>
+    <div class="fn__space"></div>
+    <span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show"
+      aria-label="更新">
+      <svg class="ft__primary">
+        <use xlink:href="#iconRefresh"></use>
+      </svg>
+    </span>
+  </div>
+</div>
+</div>
+`
+
+export const configBazaarPlugin = `
+<div class="b3-cards">
+<div data-bazaar="plugin" data-name="DocTab_Helper" class="b3-card" data-type="dark,light" data-updated="2022-11-29T16:50:43Z">
+<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/DocTab_Helper/preview.png">
+</div>
+<div class="b3-card__info fn__flex">
+  <span class="fn__flex-center fn__ellipsis">页签助手</span>
+  <span class="fn__space"></span>
+  <span class="fn__flex-1"></span>
+  <svg class="svg fn__flex-center">
+    <use xlink:href="#iconDownload"></use>
+  </svg>
+  <span class="fn__space"></span>
+  <span class="fn__flex-center">7965</span>
+</div>
+<div class="b3-card__actions" data-name="页签助手" data-url=""
+  data-hash="de08445523c22f1eddaf4800ea068fd4301033ef">
+  <div class="fn__flex-1"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall"
+    aria-label="卸载">
+    <svg>
+      <use xlink:href="#iconTrashcan"></use>
+    </svg>
+  </span>
+  <div class="fn__space"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch"
+    aria-label="使用">
+    <svg>
+      <use xlink:href="#iconSelect"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none"
+    aria-label="更新">
+    <svg class="ft__primary">
+      <use xlink:href="#iconRefresh"></use>
+    </svg>
+  </span>
+</div>
+</div>
+<div data-bazaar="plugin" data-name="Export_Helper" class="b3-card" data-type="dark,light" data-updated="2022-11-21T02:53:06Z">
+<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Export_Helper/preview.png">
+</div>
+<div class="b3-card__info fn__flex">
+  <span class="fn__flex-center fn__ellipsis">导出助手</span>
+  <span class="fn__space"></span>
+  <span class="fn__flex-1"></span>
+  <svg class="svg fn__flex-center">
+    <use xlink:href="#iconDownload"></use>
+  </svg>
+  <span class="fn__space"></span>
+  <span class="fn__flex-center">3271</span>
+</div>
+<div class="b3-card__actions" data-name="导出助手" data-url=""
+  data-hash="ea28261f3e03d0f325dca9bd1184562dcf7c3751">
+  <div class="fn__flex-1"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="uninstall"
+    aria-label="卸载">
+    <svg>
+      <use xlink:href="#iconTrashcan"></use>
+    </svg>
+  </span>
+  <div class="fn__space"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show" data-type="switch"
+    aria-label="使用">
+    <svg>
+      <use xlink:href="#iconSelect"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none"
+    aria-label="更新">
+    <svg class="ft__primary">
+      <use xlink:href="#iconRefresh"></use>
+    </svg>
+  </span>
+</div>
+</div>
+<div data-bazaar="plugin" data-name="Fusion_Helper" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z">
+<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Fusion_Helper/preview.png">
+</div>
+<div class="b3-card__info fn__flex">
+  <span class="fn__flex-center fn__ellipsis">混搭助手</span>
+  <span class="fn__space"></span>
+  <span class="fn__flex-1"></span>
+  <svg class="svg fn__flex-center">
+    <use xlink:href="#iconDownload"></use>
+  </svg>
+  <span class="fn__space"></span>
+  <span class="fn__flex-center">1039</span>
+</div>
+<div class="b3-card__actions" data-name="混搭助手" data-url=""
+  data-hash="cadc315b7976701e03df79415fb16d7a386320aa">
+  <div class="fn__flex-1"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="uninstall"
+    aria-label="卸载">
+    <svg>
+      <use xlink:href="#iconTrashcan"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="switch"
+    aria-label="使用">
+    <svg>
+      <use xlink:href="#iconSelect"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none"
+    aria-label="更新">
+    <svg class="ft__primary">
+      <use xlink:href="#iconRefresh"></use>
+    </svg>
+  </span>
+</div>
+</div>
+<div data-bazaar="plugin" data-name="Publish_Helper" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z">
+<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Publish_Helper/preview.png">
+</div>
+<div class="b3-card__info fn__flex">
+  <span class="fn__flex-center fn__ellipsis">发布助手</span>
+  <span class="fn__space"></span>
+  <span class="fn__flex-1"></span>
+  <svg class="svg fn__flex-center">
+    <use xlink:href="#iconDownload"></use>
+  </svg>
+  <span class="fn__space"></span>
+  <span class="fn__flex-center">1039</span>
+</div>
+<div class="b3-card__actions" data-name="发布助手" data-url=""
+  data-hash="cadc315b7976701e03df79415fb16d7a386320aa">
+  <div class="fn__flex-1"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="uninstall"
+    aria-label="卸载">
+    <svg>
+      <use xlink:href="#iconTrashcan"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="switch"
+    aria-label="使用">
+    <svg>
+      <use xlink:href="#iconSelect"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none"
+    aria-label="更新">
+    <svg class="ft__primary">
+      <use xlink:href="#iconRefresh"></use>
+    </svg>
+  </span>
+</div>
+</div>
+<div data-bazaar="plugin" data-name="Graph_Helper" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z">
+<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Graph_Helper/preview.png">
+</div>
+<div class="b3-card__info fn__flex">
+  <span class="fn__flex-center fn__ellipsis">图谱助手</span>
+  <span class="fn__space"></span>
+  <span class="fn__flex-1"></span>
+  <svg class="svg fn__flex-center">
+    <use xlink:href="#iconDownload"></use>
+  </svg>
+  <span class="fn__space"></span>
+  <span class="fn__flex-center">1039</span>
+</div>
+<div class="b3-card__actions" data-name="图谱助手" data-url=""
+  data-hash="cadc315b7976701e03df79415fb16d7a386320aa">
+  <div class="fn__flex-1"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="uninstall"
+    aria-label="卸载">
+    <svg>
+      <use xlink:href="#iconTrashcan"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none" data-type="switch"
+    aria-label="使用">
+    <svg>
+      <use xlink:href="#iconSelect"></use>
+    </svg>
+  </span>
+  <div class="fn__space fn__none"></div>
+  <span data-type="install-t" class="b3-tooltips b3-tooltips__nw block__icon block__icon--show fn__none"
+    aria-label="更新">
+    <svg class="ft__primary">
+      <use xlink:href="#iconRefresh"></use>
+    </svg>
+  </span>
+</div>
+</div>
+</div>
 `
