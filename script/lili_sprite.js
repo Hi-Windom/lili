@@ -1,6 +1,6 @@
-import { renderPDF } from "../extension/Export_Helper/renderPDF.js";
-import { renderPublishHelper } from "../extension/Publish_Helper/renderPublishHelper.js";
-import { renderGraphHelper } from "../extension/Graph_Helper/renderGraphHelper.js";
+import { renderPDF } from "../extension/plugin/Export_Helper/renderPDF.js";
+import { renderPublishHelper } from "../extension/plugin/Publish_Helper/renderPublishHelper.js";
+import { renderGraphHelper } from "../extension/plugin/Graph_Helper/renderGraphHelper.js";
 import * as API from "./../../Sofill-/script/utils/api.min.js";
 import { isFileExisted } from "./utils/liliFuns.js";
 import * as SC_SVG from "../../Sofill=/eHiWindom/Assets_Manager/SVG_data.js";
