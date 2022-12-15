@@ -130,7 +130,7 @@ export const configBazaarS3 = `
       <use xlink:href="#iconDownload"></use>
     </svg>
     <span class="fn__space"></span>
-    <span class="fn__flex-center">2035</span>
+    <span class="fn__flex-center">58131186</span>
   </div>
   <div class="b3-card__actions" data-name="Sofill-" data-url="https://github.com/Hi-Windom/winsay"
     data-hash="16681e3e195d2d8b4eb366843dc0ee1f907e2c8d">
@@ -211,7 +211,7 @@ export const configBazaarPlugin = `
     <use xlink:href="#iconDownload"></use>
   </svg>
   <span class="fn__space"></span>
-  <span class="fn__flex-center">3271</span>
+  <span class="fn__flex-center">69435</span>
 </div>
 <div class="b3-card__actions" data-name="导出助手" data-url=""
   data-hash="ea28261f3e03d0f325dca9bd1184562dcf7c3751">
