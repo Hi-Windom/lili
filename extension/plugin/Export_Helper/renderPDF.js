@@ -1,5 +1,7 @@
-let fs = require("fs");
-let path = require("path");
+const fs = require("fs");
+const path = require("path");
+const http = require("http");
+const os = require("os");
 import * as API from "../../../../Sofill-/script/utils/api.min.js";
 import { fetchPost, replaceLocalPath } from "../../../script/utils/liliFuns.js";
 const { ipcRenderer } = require("electron");
@@ -10,7 +12,52 @@ const {
   getCurrentWindow,
   ipcMain,
 } = require("@electron/remote");
+var child = null;
+const port = 58131;
+const host = window.siyuan.config.localIPs[0];
+function HTMLServer(callback) {
+  const server = http.createServer(function (req, res) {});
+  server.on("request", function (request, response) {
+    // response.writeHead(200, { "Content-Type": "text/plain;charset=utf-8" });
+    // 给予客户端响应的信息
+    let file = `${window.siyuan.config.system.confDir}/appearance/themes/Sofill=${request.url}`;
+    new Promise(function (html) {
+      fs.readFile(file, function (err, data) {
+        if (err) {
+          console.log(err);
+        }
+        var txt = data.toString().replace(/<!--.*-->/gs, "");
+        html(txt);
+      });
+    }).then(function (html) {
+      // 返回HTML时，前面不能 writeHead
+      response.write(html);
+      // 结束响应
+      response.end();
+    });
+  });
+  server.on("clientError", (err, socket) => {
+    socket.end("HTTP/1.1 400 Bad Request\r\n\r\n");
+  });
 
+  server.on("close", () => {
+    console.warn("server close");
+  });
+
+  server.on("connection", () => {
+    console.log("server connection");
+  });
+
+  server.on("error", (error) => {
+    console.error("server error,messmage is " + error);
+  });
+
+  server.listen(port, host, () => {
+    console.warn(`Server running at http://${host}:${port}/`);
+    callback();
+  });
+}
+HTMLServer(()=>{});
 
 let originalZoomFactor = 1;
 export const renderPDF = (id) => {
@@ -76,6 +123,24 @@ export const renderPDF = (id) => {
         position: absolute;
         right: 232px;
         left: 0;
+      }
+      #action {
+        max-width: 1px;
+        margin-right: -31px !important;
+        opacity: .58;
+        overflow: hidden;
+        transition: all 0.58s ease 0.13s;
+      }
+      #action:hover {
+        max-width: 210px;
+        margin-right: 0px !important;
+        opacity: 1;
+        transition: all 0.31s ease 0.3s;
+        backdrop-filter: blur(13px);
+      }
+      #action .b3-label {
+        padding-bottom: 1.3px;
+        margin-bottom: 5.8px;
       }
       #preview > .code-block,
       #preview > [data-type="NodeMathBlock"] {
@@ -223,6 +288,8 @@ export const renderPDF = (id) => {
     <button class="b3-button b3-button--text">${
       window.siyuan.languages.confirm
     }</button>
+    <div class="fn__space"></div>
+    <button class="b3-button SC-Export_Helper-menuWindow-active" style="background-color: var(--SCC-CNTC-百入茶);">更多选项</button>
   </div>
 </div>
 <div class="protyle-wysiwyg${
@@ -529,6 +596,10 @@ export const renderPDF = (id) => {
           previewElement.style.paddingTop = "6px";
           previewElement.style.paddingBottom = "0";
       });
+      actionElement.querySelector('.SC-Export_Helper-menuWindow-active').addEventListener('click', () => {
+        const {ipcRenderer}  = require("electron");
+          ipcRenderer.send("export-pdf-lili-more", {});
+      });
       setPadding();
       renderPreview(response.data.content);
   });
@@ -557,6 +628,7 @@ export const renderPDF = (id) => {
       nodeIntegration: true,
       webviewTag: true,
       webSecurity: false,
+      enableRemoteModule: true,
     },
   });
   window.siyuan.printWin.maximize();
@@ -565,13 +637,57 @@ export const renderPDF = (id) => {
     // 导出 PDF 预览界面不受主界面缩放影响 https://github.com/siyuan-note/siyuan/issues/6262
     window.siyuan.printWin.webContents.setZoomFactor(1);
   });
+  ipcMain.on("export-pdf-lili-more", (event, data) => {
+    if (!window.siyuan.printWin) {
+      return;
+    }
+    if (child) {
+      child.show();
+    } else {
+      child = new BrowserWindow({
+        parent: window.siyuan.printWin,
+        modal: false,
+        show: false,
+        width: 900,
+        height: 680,
+        resizable: true,
+        frame: true,
+        titleBarStyle: "hidden",
+        titleBarOverlay: {
+          color: "#cccccca5",
+          symbolColor: "black",
+        },
+        webPreferences: {
+          contextIsolation: false,
+          nodeIntegration: true,
+          webviewTag: true,
+          webSecurity: false,
+        },
+      });
+      child.loadURL(
+        `http://${host}:${port}/extension/plugin/Export_Helper/export.html`
+      );
+      child.once("ready-to-show", () => {
+        child.show();
+      });
+      child.on("closed", () => {
+        child = null;
+      });
+    }
+  });
+  window.siyuan.printWin.on("closed", () => {
+    child = null;
+    window.siyuan.printWin = null;
+  });
   fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
     window.siyuan.printWin.loadURL(response.data.url);
   });
   ipcMain.once("siyuan-export-pdf-lili", (event, data) => {
-    if (!window.siyuan.printWin) {return;}
-    const mainWindow = getCurrentWindow();
-    mainWindow.webContents.send("siyuan-export-pdf-lili", data);
+    if (!window.siyuan.printWin) {
+      return;
+    }
+    let mainWindow2 = getCurrentWindow();
+    mainWindow2.webContents.send("siyuan-export-pdf-lili", data);
   });
   ipcRenderer.once("siyuan-export-pdf-lili", (e, ipcData) => {
     dialog
@@ -598,7 +714,7 @@ export const renderPDF = (id) => {
         try {
           ipcData.pdfOptions.displayHeaderFooter = true;
           ipcData.pdfOptions.headerTemplate = "<span></span>";
-          switch(ipcData.pdfOptions.footerTemplate) {
+          switch (ipcData.pdfOptions.footerTemplate) {
             case "1":
               ipcData.pdfOptions.footerTemplate = ``;
               break;
@@ -695,4 +811,3 @@ function destroyPrintWindow() {
   getCurrentWindow().webContents.setZoomFactor(originalZoomFactor);
   window.siyuan.printWin.destroy();
 }
-

@@ -9,8 +9,6 @@ const {
   ipcRenderer,
 } = require("@electron/remote");
 
-
-
 let originalZoomFactor = 1;
 export const renderPublishHelper = (id) => {
   const localData = JSON.parse(
@@ -39,15 +37,18 @@ export const renderPublishHelper = (id) => {
     }"/>`;
   }
 
-  new Promise(function(html) {
-    fs.readFile(`${window.siyuan.config.system.dataDir}/widgets/sy-post-publisher/index.html`,function(err,data){
-      if(err){
-          console.log(err)
+  new Promise(function (html) {
+    fs.readFile(
+      `${window.siyuan.config.system.dataDir}/widgets/sy-post-publisher/index.html`,
+      function (err, data) {
+        if (err) {
+          console.log(err);
+        }
+        var txt = data.toString().replace(/<!--.*-->/gs, "");
+        html(txt);
       }
-      var txt = data.toString().replace(/<!--.*-->/gs,"");
-      html(txt);
-  })
-  }).then(function(html){
+    );
+  }).then(function (html) {
     const mainWindow = getCurrentWindow();
     window.siyuan.printWin = new BrowserWindow({
       parent: mainWindow,
@@ -67,7 +68,7 @@ export const renderPublishHelper = (id) => {
       titleBarOverlay: {
         color: "#cccccca5",
         symbolColor: "black",
-    },
+      },
       webPreferences: {
         contextIsolation: false,
         nodeIntegration: true,
@@ -79,11 +80,17 @@ export const renderPublishHelper = (id) => {
     window.siyuan.printWin.once("ready-to-show", () => {
       window.siyuan.printWin.webContents.setZoomFactor(1);
     });
-    fetchPost("/api/export/exportTempContent", { content: html }, (response) => {
-      window.siyuan.printWin.loadURL(response.data.url);
-    });
-    window.siyuan.printWin.webContents.on('dom-ready', ()=>{
-      window.siyuan.printWin.webContents.executeJavaScript(`
+    fetchPost(
+      "/api/export/exportTempContent",
+      { content: html },
+      (response) => {
+        window.siyuan.printWin.loadURL(response.data.url);
+      }
+    );
+    window.siyuan.printWin.webContents.on("dom-ready", () => {
+      window.siyuan.printWin.webContents
+        .executeJavaScript(
+          `
       const waitForExternal = setInterval(()=>{
         if(document.getElementById("app")) {
           clearInterval(waitForExternal);
@@ -98,7 +105,11 @@ export const renderPublishHelper = (id) => {
         });
         }
       }, 300);
-      `, false, (result)=>console.log("1")).then((result)=>console.log("2"));
-    })
-  })
+      `,
+          false,
+          (result) => console.log("1")
+        )
+        .then((result) => console.log("2"));
+    });
+  });
 };
