@@ -1,0 +1,15 @@
+#action {
+  max-width: 1px;
+  margin-right: -31px !important;
+  opacity: .58;
+  overflow: hidden;
+  transition: all 0.58s ease 0.13s;
+}
+
+#action:hover {
+  max-width: 210px;
+  margin-right: 0px !important;
+  opacity: 1;
+  transition: all 0.31s ease 0.3s;
+  backdrop-filter: blur(13px);
+}

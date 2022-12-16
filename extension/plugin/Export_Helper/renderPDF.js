@@ -13,6 +13,7 @@ const {
   ipcMain,
 } = require("@electron/remote");
 var child = null;
+var key_action_auto_folded = null;
 const port = 58131;
 const host = window.siyuan.config.localIPs[0];
 function HTMLServer(callback) {
@@ -57,7 +58,7 @@ function HTMLServer(callback) {
     callback();
   });
 }
-HTMLServer(()=>{});
+HTMLServer(() => {});
 
 let originalZoomFactor = 1;
 export const renderPDF = (id) => {
@@ -123,20 +124,6 @@ export const renderPDF = (id) => {
         position: absolute;
         right: 232px;
         left: 0;
-      }
-      #action {
-        max-width: 1px;
-        margin-right: -31px !important;
-        opacity: .58;
-        overflow: hidden;
-        transition: all 0.58s ease 0.13s;
-      }
-      #action:hover {
-        max-width: 210px;
-        margin-right: 0px !important;
-        opacity: 1;
-        transition: all 0.31s ease 0.3s;
-        backdrop-filter: blur(13px);
       }
       #action .b3-label {
         padding-bottom: 1.3px;
@@ -288,8 +275,12 @@ export const renderPDF = (id) => {
     <button class="b3-button b3-button--text">${
       window.siyuan.languages.confirm
     }</button>
-    <div class="fn__space"></div>
+  </div>
+  <div class="fn__flex" style="margin-top: 13px;">
+    <div class="fn__flex-1"></div>
     <button class="b3-button SC-Export_Helper-menuWindow-active" style="background-color: var(--SCC-CNTC-百入茶);">更多选项</button>
+    <div class="fn__space"></div>
+    <button class="b3-button action-auto-folded" style="background-color: var(--SCC-CNTC-百入茶);">自动收敛</button>
   </div>
 </div>
 <div class="protyle-wysiwyg${
@@ -600,6 +591,13 @@ export const renderPDF = (id) => {
         const {ipcRenderer}  = require("electron");
           ipcRenderer.send("export-pdf-lili-more", {});
       });
+      actionElement.querySelector('.action-auto-folded').addEventListener('click', () => {
+        let id = document.getElementById("action-auto-folded");
+        if (id) {id.remove();} else {
+          const {ipcRenderer}  = require("electron");
+            ipcRenderer.send("export-pdf-lili-action-auto-folded");
+        }
+      });
       setPadding();
       renderPreview(response.data.content);
   });
@@ -636,6 +634,33 @@ export const renderPDF = (id) => {
   window.siyuan.printWin.once("ready-to-show", () => {
     // 导出 PDF 预览界面不受主界面缩放影响 https://github.com/siyuan-note/siyuan/issues/6262
     window.siyuan.printWin.webContents.setZoomFactor(1);
+  });
+  ipcMain.on("export-pdf-lili-action-auto-folded", async (event, data) => {
+    if (!window.siyuan.printWin) {
+      return;
+    }
+    const choice = dialog.showMessageBoxSync(window.siyuan.printWin, {
+      type: "question",
+      buttons: ["Yes", "No"],
+      title: `是否开启自动收敛？`,
+      message: `侧栏自动收敛可以更好地预览文档，Yes 开启，No 关闭`,
+      defaultId: 0,
+      cancelId: 1,
+    });
+    const yes = choice === 0;
+    if (yes) {
+      if (key_action_auto_folded != null) {
+        return;
+      }
+      let file = `${window.siyuan.config.system.confDir}/appearance/themes/Sofill=/extension/plugin/Export_Helper/renderPDF.css`;
+      let css = fs.readFileSync(file).toString();
+      key_action_auto_folded =
+        await window.siyuan.printWin.webContents.insertCSS(css);
+      event.preventDefault();
+    } else {
+      window.siyuan.printWin.webContents.removeInsertedCSS(key_action_auto_folded);
+      key_action_auto_folded = null;
+    }
   });
   ipcMain.on("export-pdf-lili-more", (event, data) => {
     if (!window.siyuan.printWin) {
@@ -675,7 +700,7 @@ export const renderPDF = (id) => {
       });
     }
   });
-  window.siyuan.printWin.on("closed", () => {
+  window.siyuan.printWin.on("closed", (event) => {
     child = null;
     window.siyuan.printWin = null;
   });
