@@ -25,8 +25,8 @@ async function winsayKernel(path_way) {
     let xiao = await new Promise((resolve, reject) => {
       isFileExisted(path_way).then((response) => {
         if (response) {
-          window.funs.loadScript(
-            window.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
+          window.sofill.funs.loadScript(
+            window.sofill.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
             undefined,
             true
           );
@@ -57,28 +57,28 @@ setTimeout(() => {
     let ready = winsayKernel(`${config.winsay_ROOT_ABS}theme.js`);
     if (ready) {
       if (lili) {
-        window.funs.loadScript(
-          window.funs.addURLParam("/appearance/themes/Sofill=/script/VS.js"),
+        window.sofill.funs.loadScript(
+          window.sofill.funs.addURLParam("/appearance/themes/Sofill=/script/VS.js"),
           undefined,
           true
         );
-        window.funs.loadScript(
-          window.funs.addURLParam(
+        window.sofill.funs.loadScript(
+          window.sofill.funs.addURLParam(
             "/appearance/themes/Sofill=/script/lili_sprite.js"
           ),
           undefined,
           true
         );
-        window.funs.loadScript(
-          window.funs.addURLParam(
+        window.sofill.funs.loadScript(
+          window.sofill.funs.addURLParam(
             "/appearance/themes/Sofill=/script/module/CPext.js"
           ),
           undefined,
           true
         );
       } else {
-        window.funs.loadScript(
-          window.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
+        window.sofill.funs.loadScript(
+          window.sofill.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
           undefined,
           true
         );
