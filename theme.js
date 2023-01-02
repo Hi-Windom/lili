@@ -1,3 +1,6 @@
+window.sofill = {};
+window.sofill.cp = {};
+window.sofill.funs = {};
 var fs = null;
 var path = null;
 var clientMode = (() => {
@@ -36,14 +39,13 @@ if (isAppMode) {
   path = require("path");
   console.log("isAppMode");
 }
-window.theme = {};
-window.funs = {};
+
 /**
  * 获取操作系统 'windows' 或 'darwin' (MacOS) 或 'android'
  */
-window.theme.OS = window.siyuan.config.system.os;
+window.sofill.OS = window.siyuan.config.system.os;
 
-window.funs.loadStyle = function (href, id = null) {
+window.sofill.funs.loadStyle = function (href, id = null) {
   let style = document.createElement("link");
   if (id) style.id = id;
   style.type = "text/css";
@@ -51,15 +53,15 @@ window.funs.loadStyle = function (href, id = null) {
   style.href = href;
   document.head.appendChild(style);
 };
-window.funs.updateStyle = function (id, href) {
+window.sofill.funs.updateStyle = function (id, href) {
   let style = document.getElementById(id);
   if (style) {
     style.setAttribute("href", href);
   } else {
-    window.funs.loadStyle(href, id);
+    window.sofill.funs.loadStyle(href, id);
   }
 };
-window.funs.loadScript = function (
+window.sofill.funs.loadScript = function (
   src,
   type = "module",
   async = false,
@@ -72,7 +74,7 @@ window.funs.loadScript = function (
   script.src = src;
   document.head.appendChild(script);
 };
-window.funs.addURLParam = function (
+window.sofill.funs.addURLParam = function (
   url,
   param = {
     v: window.siyuan.config.appearance.themeVer,
@@ -167,8 +169,8 @@ if (SelfProtection && SelfProtection === "true") {
   }
 }
 
-window.funs.loadScript(
-  window.funs.addURLParam("/appearance/themes/Sofill=/script/kernel.js"),
+window.sofill.funs.loadScript(
+  window.sofill.funs.addURLParam("/appearance/themes/Sofill=/script/kernel.js"),
   undefined,
   true
 );
