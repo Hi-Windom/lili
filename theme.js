@@ -3,26 +3,6 @@ window.sofill.cp = {};
 window.sofill.funs = {};
 var fs = null;
 var path = null;
-var clientMode = (() => {
-  let url = new URL(window.location.href);
-  switch (true) {
-    case url.pathname.startsWith("/stage/build/app"):
-      return "body--app";
-    case url.pathname.startsWith("/stage/build/desktop"):
-      return "body--desktop";
-    case url.pathname.startsWith("/stage/build/mobile"):
-      return "body--mobile";
-    default:
-      return null;
-  }
-})();
-document.body.classList.add(clientMode);
-document.body.classList.add(window.siyuan.config.system.os);
-if (navigator.userAgent.toLowerCase().startsWith("siyuan")) {
-  document.body.classList.add("client--siyuan");
-} else {
-  document.body.classList.add("client--browser");
-}
 
 var isAppMode = document
   .getElementsByTagName("body")[0]
@@ -40,10 +20,6 @@ if (isAppMode) {
   console.log("isAppMode");
 }
 
-/**
- * 获取操作系统 'windows' 或 'darwin' (MacOS) 或 'android'
- */
-window.sofill.OS = window.siyuan.config.system.os;
 
 window.sofill.funs.loadStyle = function (href, id = null) {
   let style = document.createElement("link");
@@ -152,7 +128,7 @@ if (SelfProtection && SelfProtection === "true") {
     path ? P.push(path.join(bP, "script", "CP.js")) : null;
     path ? P.push(path.join(bP, "script", "config.js")) : null;
     path ? P.push(path.join(bP, "style", "Init.min.css")) : null;
-    path ? P.push(path.join(bP, "style", "Block.min.css")) : null;
+    path ? P.push(path.join(bP, "style", "Block.css")) : null;
     path ? P.push(path.join(bP_lili, "script", "kernel.js")) : null;
     P.forEach((i) => {
       fs
