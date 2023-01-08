@@ -46,42 +46,7 @@ Sofill= 是专门为 Sofill- Windows 客户端用户打造的一款主题，非 
 
 丽丽精灵是 Sofill= 主题的悬浮球，你可以拖拽它放在任意位置，贴边自动收敛。鼠标右键点击呼出菜单。
 
-## 🎈 鸣谢
-
-Sofill 系列主题的诞生与成长离不开下列开源项目的贡献，以及热心网友的反馈和建议。
-
-### 思源社区
-
-[思源笔记](https://github.com/siyuan-note/siyuan)
-
-参考主题：（排名不分先后）
-
-* [OneNote](https://github.com/UserZYF/OneNote)
-* [Dark+](https://github.com/Zuoqiu-Yingyi/siyuan-theme-dark-plus)
-* [Zhang-Light](https://github.com/UserZYF/zhang-light)
-* [Chrome-A4](https://github.com/UserZYF/Chrome-A4)
-* [pink-room](https://github.com/StarDustSheep/pink-room)
-* [Savor](https://github.com/royc01/notion-theme)
-* [blue-dog](https://github.com/UserZYF/blue-dog)
-* [Dark-Blue](https://github.com/Morganwan90/Darkblue-siyuan-theme)
-
-### 资源
-
-字体：（排名不分先后）
-
-* [得意黑 Smiley Sans：一款在人文观感和几何特征中寻找平衡的中文黑体](https://github.com/atelier-anchor/smiley-sans)
-* [阿里巴巴普惠体](https://done.alibabadesign.com/puhuiti2.0)
-
-图片：（排名不分先后）
-
-* [icon-icons.com](https://icon-icons.com/zh/)
-* [iconfont](https://www.iconfont.cn/)
-* [Simple Icons](https://simpleicons.org/)
-
-## 💎 特别鸣谢
-
-* [OriginOS](https://www.vivo.com.cn/originos)
-* [搜狗输入法手机版](https://shouji.sogou.com/?r=ime)
+## 🎈 [鸣谢](https://github.com/Hi-Windom/Sofill/blob/main/P%26L.md)
 
 # 🌐 开源声明
 
@@ -89,7 +54,7 @@ Sofill 系列主题的诞生与成长离不开下列开源项目的贡献，以�
 2. 基于 Sofill 系列主题二次创作的作品不得在未获得原作者团队授权的情况下擅自在思源集市或者其他渠道公开发行
 
 <p align="center" style="margin: 131px auto;">
-    <img src="https://img.shields.io/pypi/l/color-theme-analyse.svg?logo=GitHub" alt="License" style="cursor:pointer;height: 31px;margin: 5px auto;"><a href="https://github.com/Hi-Windom/lili/issues?q=is%3Aopen+is%3Aissue">
+    <img src="https://img.shields.io/github/license/Hi-Windom/lili?logo=GitHub" alt="License" style="cursor:pointer;height: 31px;margin: 5px auto;"><a href="https://github.com/Hi-Windom/lili/issues?q=is%3Aopen+is%3Aissue">
     <img alt="GitHub open issues" src="https://img.shields.io/github/issues-raw/Hi-Windom/lili?logo=GitHub" style="cursor:pointer;height: 31px;margin: 5px auto;"/>
     </a><a href="https://github.com/Hi-Windom/lili/issues?q=is%3Aissue+is%3Aclosed">
     <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/Hi-Windom/lili?logo=GitHub" style="cursor:pointer;height: 31px;margin: 5px auto;">
