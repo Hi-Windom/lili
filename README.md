@@ -38,9 +38,11 @@ Step 2 鼠标悬浮或左键单击右下角控件，在呼出的菜单中点击�
 
 ## 🏳️‍🌈 主题特色介绍
 
-基于 Sofill-
+基于 Sofill- 内核
 
 Sofill= 是专门为 Sofill- Windows 客户端用户打造的一款主题，非 Windows 客户端用户请直接使用 Sofill-
+
+内部集成 Sofill# 资源扩展套件和 Sofill+ 功能扩展套件
 
 ### 丽丽精灵
 

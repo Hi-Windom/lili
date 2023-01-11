@@ -1,0 +1,13 @@
+@import url("./fonts-local.css");
+
+@font-face {
+  font-family: "SC Smiley";
+  src: url("./../src/fonts/SmileySans-Oblique.otf.woff2"), local("PingFang SC")
+}
+
+@font-face {
+  font-family: "阿里巴巴普惠体 2.0 55 Regular";
+  font-weight: 400;
+  src: url("./../src/fonts/Alibaba_PuHuiTi_2.0_55_Regular_55_Regular.ttf"), local("PingFang SC");
+  font-display: swap;
+}
