@@ -79,7 +79,7 @@ Sofill= 是专门为 Sofill- Windows 客户端用户打造的一款主题，非 
     <img alt="GitHub open issues" src="https://img.shields.io/github/issues-raw/Hi-Windom/lili?logo=GitHub" style="cursor:pointer;height: 31px;margin: 5px auto;"/>
     </a><a href="https://github.com/Hi-Windom/lili/issues?q=is%3Aissue+is%3Aclosed">
     <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/Hi-Windom/lili?logo=GitHub" style="cursor:pointer;height: 31px;margin: 5px auto;">
-    </a><a href="https://github.com/Hi-Windom/lili/commits/main"></a>
+    </a>
 </p>
 
 ---
