@@ -658,11 +658,42 @@ export const renderPDF = (id) => {
         await window.siyuan.printWin.webContents.insertCSS(css);
       event.preventDefault();
     } else {
-      window.siyuan.printWin.webContents.removeInsertedCSS(key_action_auto_folded);
+      window.siyuan.printWin.webContents.removeInsertedCSS(
+        key_action_auto_folded
+      );
       key_action_auto_folded = null;
     }
   });
-  ipcMain.on("export-pdf-lili-more", (event, data) => {
+
+  let custom__split_byH1 = localStorage.getItem(
+    "SC_lili_cp_extension_plugin__Export_Helper__custom__split_byH1"
+  );
+  if (custom__split_byH1 == "true") {
+    let file = `${window.siyuan.config.system.confDir}/appearance/themes/Sofill=/extension/plugin/Export_Helper/css/custom__split_byH1.css`;
+    let css = fs.readFileSync(file).toString();
+    window.siyuan.printWin.webContents.insertCSS(css);
+  }
+  ipcMain.on("export-pdf-lili-more", async (event, data) => {
+    const configsHTML = `
+    <table>
+	<thead>
+		<tr>
+			<th>项</th>
+			<th>值</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>根据一级标题分页</td>
+			<td>${custom__split_byH1}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+    `;
     if (!window.siyuan.printWin) {
       return;
     }
@@ -693,6 +724,9 @@ export const renderPDF = (id) => {
         `http://${host}:${port}/extension/plugin/Export_Helper/export.html`
       );
       child.once("ready-to-show", () => {
+        child.webContents.executeJavaScript(
+          `document.querySelector("#configs").innerHTML = \`${configsHTML}\`;`
+        );
         child.show();
       });
       child.on("closed", () => {

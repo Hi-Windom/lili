@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #tell {
+            margin-bottom: 2em;
+        }
+
+        #configs table {
+            min-width: 100%;
+            font-size: 1.31em;
+        }
+
+        #configs th,
+        #configs td {
+            border: 1px #000000 solid;
+            padding: 3px;
+        }
+    </style>
 </head>
+
 <body>
-  <div>
-    <p style="font-size:10.5pt"><span style="font-family:'Microsoft JhengHei'">你好</span><span
-        style="font-family:'Courier New'">，</span><span style="font-family:'Microsoft JhengHei'">我是导出助手</span></p>
-    <p style="font-size:10.5pt"><span style="font-family:'Courier New'; -aw-import:ignore">&nbsp;</span></p>
-    <p style="font-size:10.5pt"><span style="font-family:'Microsoft JhengHei'">我可以</span><span
-        style="font-family:'Courier New'">：</span></p>
-    <p style="font-size:10.5pt"><span style="font-family:'Courier New'; -aw-import:ignore">&nbsp;</span></p>
-    <ol type="1" style="margin:0pt; padding-left:0pt">
-      <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
-          style="font-family:'Microsoft JhengHei'">更好地预览导出效果</span></li>
-      <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
-          style="font-family:'Microsoft JhengHei'">选择不同的页脚</span></li>
-      <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
-          style="font-family:'Microsoft JhengHei'">敬请期待</span></li>
-    </ol>
-  </div>
+    <div id="tell">
+        <p>以下表格显示了额外的配置，修改它们请在主题设置面板>扩展>导出助手配置界面完成</p>
+    </div>
+    <div id="configs"></div>
 </body>
+
 </html>
