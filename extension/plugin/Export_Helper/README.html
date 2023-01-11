@@ -1,16 +1,49 @@
-<div>
-  <p style="font-size:10.5pt"><span style="font-family:'Microsoft JhengHei'">你好</span><span
-      style="font-family:'Courier New'">，</span><span style="font-family:'Microsoft JhengHei'">我是导出助手</span></p>
-  <p style="font-size:10.5pt"><span style="font-family:'Courier New'; -aw-import:ignore">&nbsp;</span></p>
-  <p style="font-size:10.5pt"><span style="font-family:'Microsoft JhengHei'">我可以</span><span
-      style="font-family:'Courier New'">：</span></p>
-  <p style="font-size:10.5pt"><span style="font-family:'Courier New'; -aw-import:ignore">&nbsp;</span></p>
-  <ol type="1" style="margin:0pt; padding-left:0pt">
-    <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
-        style="font-family:'Microsoft JhengHei'">更好地预览导出效果</span></li>
-    <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
-        style="font-family:'Microsoft JhengHei'">选择不同的页脚</span></li>
-    <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
-        style="font-family:'Microsoft JhengHei'">敬请期待</span></li>
-  </ol>
+<div id="read-me" class="">
+    <p style="font-size:10.5pt"><span style="font-family:'Microsoft JhengHei'">你好</span><span
+            style="font-family:'Courier New'">，</span><span style="font-family:'Microsoft JhengHei'">我是导出助手</span></p>
+    <p style="font-size:10.5pt"><span style="font-family:'Courier New'; -aw-import:ignore">&nbsp;</span></p>
+    <p style="font-size:10.5pt"><span style="font-family:'Microsoft JhengHei'">我可以</span><span
+            style="font-family:'Courier New'">：</span></p>
+    <p style="font-size:10.5pt"><span style="font-family:'Courier New'; -aw-import:ignore">&nbsp;</span></p>
+    <ol type="1" style="margin:0pt; padding-left:0pt">
+        <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
+                style="font-family:'Microsoft JhengHei'">更好地预览导出效果</span></li>
+        <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
+                style="font-family:'Microsoft JhengHei'">选择不同的页脚</span></li>
+        <li style="margin-left:17.6pt; padding-left:7.6pt; font-family:'Courier New'; font-size:10.5pt"><span
+                style="font-family:'Microsoft JhengHei'">敬请期待</span></li>
+    </ol>
 </div>
+<div id="config-me" class="fn__none">
+    <label class="fn__flex b3-label">
+        <div class="fn__flex-1">根据一级标题分页<div class="b3-label__text"></div>
+        </div><span class="fn__space"></span><input class="b3-switch fn__flex-center"
+            id="SC_lili_cp_extension_plugin__Export_Helper__custom__split_byH1" type="checkbox">
+    </label>
+</div>
+<script id="eval-me">
+    console.log("ok");
+    // 初始化选项的值
+    // let selectList = document.querySelectorAll("select[id^='SC_lili_cp']");
+    // selectList.forEach(function (value) {
+    //     API.propInit(value.id, "change");
+    // });
+    // let rangeSliderList = document.querySelectorAll(
+    //     "input[id^='SC_lili_cp'][type='range']"
+    // );
+    // rangeSliderList.forEach(function (value) {
+    //     API.propInit(value.id, "change");
+    // });
+    let checkboxList = document.querySelectorAll(
+        "input[id^='SC_lili_cp'][type='checkbox']"
+    );
+    checkboxList.forEach(function (value) {
+        API.checkedInit(value);
+    });
+    API.checkedChange(
+        document.getElementById("SC_lili_cp_extension_plugin__Export_Helper__custom__split_byH1"),
+        () => { },
+        () => { }
+    );
+
+</script>
