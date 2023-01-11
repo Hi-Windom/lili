@@ -46,8 +46,8 @@ async function extension_injury() {
         }
       });
       xyz.forEach((i) => {
+        let rm = document.querySelector("#SC-CP #configBazaarReadme");
         if (i.classList.contains("b3-card")) {
-          let rm = document.querySelector("#SC-CP #configBazaarReadme");
           let rmP = path.join(
             window.siyuan.config.system.confDir,
             "appearance",
@@ -64,7 +64,21 @@ async function extension_injury() {
             (err,data)=>{if(err){API.通知(err)}else{rm.querySelector(".item__readme").innerHTML = data}}
           );
           rm.querySelector(".item__preview").style = `background-image: url(${i.querySelector(".b3-card__img>img").attributes["src"].value})`;
+          rm.querySelector(".item__title").innerHTML = i.attributes["data-name"].value;
           rm.style.right = "0px";
+        }
+        if (i.classList.contains("SC-config-button")) {
+          let read = rm.querySelector("#read-me");
+          let conf = rm.querySelector("#config-me");
+          let EVAL = rm.querySelector("#eval-me").innerHTML;
+          if (conf.classList.contains("fn__none")) {
+            conf.classList.remove("fn__none");
+            read.classList.add("fn__none");
+            eval(EVAL);
+          } else {
+            read.classList.remove("fn__none");
+            conf.classList.add("fn__none");
+          }
         }
       });
     });

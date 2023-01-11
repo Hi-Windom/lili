@@ -83,14 +83,14 @@ export const CP_container_extension = `
       <div class="fn__flex"><button class="b3-button b3-button--outline" data-type="goBack" title="Go back"><svg>
             <use xlink:href="#iconLeft"></use>
           </svg></button>
-        <div class="item__nav">暗黑 主题</div>
+        <div class="item__nav"></div>
       </div>
       <div class="fn__flex SC_mall_badge_container" style="justify-content: center;flex-wrap: wrap;"><img alt=""
           src="https://img.shields.io/badge/-%E4%BA%BA%E5%B7%A5%E4%BA%B2%E6%B5%8B-black?logo=AdGuard"><img alt=""
           src="https://img.shields.io/badge/-%E5%BC%80%E6%BA%90%E5%AE%A1%E6%A0%B8-131?logo=Git"><img alt=""
           src="https://img.shields.io/badge/-%E6%AD%A3%E7%89%88%E6%8E%88%E6%9D%83-black?logo=Google Fit"><img alt=""
           src="https://img.shields.io/badge/-%E5%AE%98%E6%96%B9%E5%87%BA%E5%93%81-black?logo=Opsgenie"></div><a
-        href="https://github.com/Hi-Windom/winsay" target="_blank" class="item__title" title="GitHub Repo">Sofill-</a>
+        href="https://github.com/Hi-Windom/winsay" target="_blank" class="item__title" title="GitHub Repo"></a>
       <div class="fn__hr--b"></div>
       <div class="fn__hr--b"></div>
       <div style="line-height: 20px;"><span class="ft__smaller">Made with ❤️ by</span><br><a
@@ -100,13 +100,11 @@ export const CP_container_extension = `
       <div class="fn__hr"></div>
       <div class="fn__hr"></div>
       <div class="fn__hr--b"></div>
-      <div data-type="light,dark"><button class="b3-button" style="width: 168px"
-          data-hash="16681e3e195d2d8b4eb366843dc0ee1f907e2c8d" data-name="Sofill-" data-bazaar="S3"
-          data-url="https://github.com/Hi-Windom/winsay" data-type="install">下载</button></div>
+      <div><button class="b3-button SC-config-button" style="width: 168px">配置</button></div>
     </div>
     <div class="item__main">
       <div class="item__preview"
-        style="background-image: url(https://oss.b3logfile.com/package/Hi-Windom/winsay@16681e3e195d2d8b4eb366843dc0ee1f907e2c8d/preview.png?imageslim)">
+        style="">
       </div>
       <div class="item__readme b3-typography b3-typography--default" style="position:relative;">
       </div>
