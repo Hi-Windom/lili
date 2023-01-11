@@ -44,6 +44,8 @@ Sofill= 是专门为 Sofill- Windows 客户端用户打造的一款主题，非 
 
 内部集成 Sofill# 资源扩展套件和 Sofill+ 功能扩展套件
 
+![gites](eHiWindom/gites/preview.png) ![lnco](eHiWindom/lnco/preview.png)
+
 ### 丽丽精灵
 
 丽丽精灵是 Sofill= 主题的悬浮球，你可以拖拽它放在任意位置，贴边自动收敛。鼠标右键点击呼出菜单。
