@@ -28,6 +28,23 @@
 
 ## ✨ 正式开启公测
 
+### v1.1 聚合说明
+
+> 2023-01-?? released
+
+<p>
+<img src="https://img.shields.io/badge/SiYuan-2.6.2-green" alt="适配 SiYuan v2.6.2" title="建议先更新思源版本" style="cursor:pointer;height: 38px;margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/winsay-1.5-green" alt="适配 Sofill- v1.5" title="建议先更新Sofill-版本" style="cursor:pointer;height: 38px;margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/-%E6%9E%84%E5%BB%BA-yellow" alt="这是一个构建版本" title="建议手动删除旧版本后再下载，而不是直接更新" style="cursor:pointer;height: 38px;margin: 3px;"/> <br>
+<img src="https://img.shields.io/badge/Android-NO-red?logo=Android" title="" style="margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/Windows 11-PASS-green?logo=Windows 11" title="" style="margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/Docker-NO-red?logo=Docker" title="" style="margin: 3px auto;"/>
+</p>
+
+引入特性：
+
+1. [【导出助手】导出PDF支持根据一级标题分页 · Issue #12 · v1.1.2](https://github.com/Hi-Windom/lili/issues/12)
+
 ### 主题设置界面入口指南
 
 Step 1 确保在思源软件设置里关闭了【隐藏底部状态栏】
