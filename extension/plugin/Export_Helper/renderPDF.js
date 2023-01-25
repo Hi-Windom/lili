@@ -299,7 +299,7 @@ export const renderPDF = (id) => {
 <script src="${servePath}/stage/protyle/js/lute/lute.min.js?${
     window.siyuan.config.system.kernelVersion
   }"></script>
-  <script type="module" src="${servePath}/appearance/themes/Sofill=/extension/Export_Helper/main.js?${
+  <script type="module" src="${servePath}${window.lili.where.themeRoot}extension/Export_Helper/main.js?${
     window.siyuan.config.system.kernelVersion
   }"></script>
 <script>
@@ -652,7 +652,7 @@ export const renderPDF = (id) => {
       if (key_action_auto_folded != null) {
         return;
       }
-      let file = `${window.siyuan.config.system.confDir}/appearance/themes/Sofill=/extension/plugin/Export_Helper/renderPDF.css`;
+      let file = `${window.siyuan.config.system.confDir}${window.lili.where.themeRoot}extension/plugin/Export_Helper/renderPDF.css`;
       let css = fs.readFileSync(file).toString();
       key_action_auto_folded =
         await window.siyuan.printWin.webContents.insertCSS(css);
@@ -669,7 +669,7 @@ export const renderPDF = (id) => {
     "SC_lili_cp_extension_plugin__Export_Helper__custom__split_byH1"
   );
   if (custom__split_byH1 == "true") {
-    let file = `${window.siyuan.config.system.confDir}/appearance/themes/Sofill=/extension/plugin/Export_Helper/css/custom__split_byH1.css`;
+    let file = `${window.siyuan.config.system.confDir}${window.lili.where.themeRoot}extension/plugin/Export_Helper/css/custom__split_byH1.css`;
     let css = fs.readFileSync(file).toString();
     window.siyuan.printWin.webContents.insertCSS(css);
   }

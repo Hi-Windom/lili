@@ -1,43 +1,68 @@
-window.sofill = {};
-window.sofill.cp = {};
-window.sofill.funs = {};
-var fs = null;
-var path = null;
+const themeRootDirName = "Sofill="; // 在此修改主题根目录文件夹名。注意：请确保正确填写，默认为 "Sofill=" 会自动判断文件夹名，因此一般无需修改此项
+window.lili = {
+  funs: {},
+  ekits: {},
+  where: {
+    themeRoot: `/appearance/themes/${themeRootDirName}/`,
+    localThemeName: themeRootDirName,
+  },
+  storage: {},
+};
+window.lili_proxy = new Proxy(window.lili, {
+  get: function (target, propKey, receiver) {
+    console.log(`getting ${propKey}!`);
+    return Reflect.get(target, propKey, receiver);
+  },
+  set: function (target, propKey, value, receiver) {
+    console.log(`setting ${propKey}!`);
+    return Reflect.set(target, propKey, value, receiver);
+  },
+});
 
-var isAppMode = document
-  .getElementsByTagName("body")[0]
-  .classList.contains("android")
-  ? false
-  : document.getElementsByTagName("body")[0].classList.contains("client--browser")
-  ? false
-  : window.siyuan.config.system.os == "windows" ||
-    window.siyuan.config.system.os == "darwin"
-  ? true
-  : false;
-if (isAppMode) {
-  fs = require("fs");
-  path = require("path");
-  console.log("isAppMode");
+switch (window.siyuan.config.appearance.mode) {
+  case 1:
+    document.body.classList.add("mode--dark");
+    if (themeRootDirName === "Sofill=") {
+      window.lili.where.localThemeName =
+        window.siyuan.config.appearance.themeDark;
+      window.lili.where.themeRoot = new URL(themeStyle.href).pathname.replace(
+        "theme.css",
+        ""
+      );
+    }
+    break;
+  default:
+    document.body.classList.add("mode--light");
+    if (themeRootDirName === "Sofill=") {
+      window.lili.where.localThemeName =
+        window.siyuan.config.appearance.themeLight;
+      window.lili.where.themeRoot = new URL(themeStyle.href).pathname.replace(
+        "theme.css",
+        ""
+      );
+    }
+    break;
 }
 
-
-window.sofill.funs.loadStyle = function (href, id = null) {
+window.lili.funs.loadStyle = function (href, id = null) {
   let style = document.createElement("link");
   if (id) style.id = id;
   style.type = "text/css";
   style.rel = "stylesheet";
   style.href = href;
   document.head.appendChild(style);
+  return style;
 };
-window.sofill.funs.updateStyle = function (id, href) {
+window.lili.funs.updateStyle = function (id, href) {
   let style = document.getElementById(id);
   if (style) {
     style.setAttribute("href", href);
+    return style
   } else {
-    window.sofill.funs.loadStyle(href, id);
+    return window.lili.funs.loadStyle(href, id);
   }
 };
-window.sofill.funs.loadScript = function (
+window.lili.funs.loadScript = function (
   src,
   type = "module",
   async = false,
@@ -49,8 +74,9 @@ window.sofill.funs.loadScript = function (
   if (defer) script.defer = true;
   script.src = src;
   document.head.appendChild(script);
+  return script;
 };
-window.sofill.funs.addURLParam = function (
+window.lili.funs.addURLParam = function (
   url,
   param = {
     v: window.siyuan.config.appearance.themeVer,
@@ -90,63 +116,20 @@ window.sofill.funs.addURLParam = function (
   }
 };
 
-var SelfProtection = localStorage.getItem(
-  "SC_winsay_cp_system__SelfProtection"
-);
-var P = [];
-var bP = "";
-var bP_lili = "";
-path
-  ? (bP = path.join(
-      window.siyuan.config.system.confDir,
-      "appearance",
-      "themes",
-      "Sofill-"
-    ))
-  : null;
-path
-  ? (bP_lili = path.join(
-      window.siyuan.config.system.confDir,
-      "appearance",
-      "themes",
-      "Sofill="
-    ))
-  : null;
-fs
-  ? fs.access(bP_lili, (e) => {
-      if (e) {
-        console.error(e);
-        alert(
-          `主题根目录未正确命名或不存在：【致命错误】${bP_lili} 文件夹不存在。修正错误后，需重启思源并重新选择主题。`
-        );
-      }
-    })
-  : null;
-if (SelfProtection && SelfProtection === "true") {
-  try {
-    path ? P.push(path.join(bP, "script", "utils", "api.min.js")) : null;
-    path ? P.push(path.join(bP, "script", "CP.js")) : null;
-    path ? P.push(path.join(bP, "script", "config.js")) : null;
-    path ? P.push(path.join(bP, "style", "Init.min.css")) : null;
-    path ? P.push(path.join(bP, "style", "Block.css")) : null;
-    path ? P.push(path.join(bP_lili, "script", "kernel.js")) : null;
-    P.forEach((i) => {
-      fs
-        ? fs.readFile(i, "utf-8", (e, data) => {
-            if (e) {
-              console.error(e);
-              alert(`主题自我保护检测到异常：【致命错误】${i} 文件不存在`);
-            }
-          })
-        : null;
-    });
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-window.sofill.funs.loadScript(
-  window.sofill.funs.addURLParam("/appearance/themes/Sofill=/script/kernel.js"),
+window.lili.funs.loadScript(
+  window.lili.funs.addURLParam(
+    `${window.lili.where.themeRoot}script/lib/sweetalert2.all.min.js`
+  ),
   undefined,
+  true,
   true
-);
+).onload = () => {
+  window.lili.funs.loadScript(
+    window.lili.funs.addURLParam(
+      `${window.lili.where.themeRoot}script/kernel.js`
+    ),
+    undefined,
+    true,
+    true
+  );
+};

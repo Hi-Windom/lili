@@ -1,23 +1,33 @@
-import * as config from "./../../Sofill-/script/config.js";
-import { ConfirmDialog } from "./../../Sofill-/script/module/CPM.js";
-import * as CD from "./../../Sofill-/script/module/XML/ConfirmDialog.js";
 import { isFileExisted } from "./utils/liliFuns.js";
 var fs = null;
 var lili = null;
+var winsayLocalName = "winsay";
+var winsay_ROOT_ABS =
+  `${window.siyuan.config.system.confDir}/appearance/themes/` +
+  winsayLocalName +
+  "/";
 
 if (
-  document.getElementsByTagName("body")[0].classList.contains("android")
+  document.body.classList.contains("android")
     ? false
-    : document
-        .getElementsByTagName("body")[0]
-        .classList.contains("body--desktop")
+    : document.body.classList.contains("body--desktop")
     ? false
     : window.siyuan.config.system.os == "windows"
     ? true
     : false
 ) {
   fs = require("fs");
-  lili = true;
+  window.lili.isDesktopAppMode = true;
+  const { exec } = require("child_process");
+  const iconv = require("iconv-lite")
+  const child = exec("node2 -v", {encoding: 'buffer'});
+
+  child.stdout.on("data", (data) => {
+    console.log("stdout :", iconv.decode(data, 'cp936'));
+  });
+  child.stderr.on("data", (err) => {
+    console.log("error :", iconv.decode(err, 'cp936'));
+  });
 }
 
 async function winsayKernel(path_way) {
@@ -25,17 +35,21 @@ async function winsayKernel(path_way) {
     let xiao = await new Promise((resolve, reject) => {
       isFileExisted(path_way).then((response) => {
         if (response) {
-          window.sofill.funs.loadScript(
-            window.sofill.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
+          window.lili.funs.loadScript(
+            window.lili.funs.addURLParam(
+              `/appearance/themes/${winsayLocalName}/theme.js`
+            ),
             undefined,
             true
           );
           console.log("Sofill- kernel loaded");
           resolve(true);
         } else {
-          new Notification("Sofill- 内核损坏", {
-            body: "请前往集市重装 Sofill- 后继续",
-          }).onclick = () => console.log("Notification clicked!");
+          window.Sweetalert2.fire(
+            "Sofill- 内核损坏！",
+            "请前往集市重装 Sofill- 后继续。",
+            "error"
+          );
           reject(false);
         }
       });
@@ -50,63 +64,58 @@ async function winsayKernel(path_way) {
 
 setTimeout(() => {
   if (!window.siyuan.config.appearance.lightThemes.includes("Sofill-")) {
-    new Notification("Sofill- 内核未安装", {
-      body: "请前往集市安装 Sofill- 后继续",
-    }).onclick = () => console.log("Notification clicked!");
+    window.Sweetalert2.fire(
+      "未识别到 Sofill- 主题！",
+      "请前往集市安装 Sofill- 后继续。<br>如已安装，请确保文件夹名称为 Sofill- 未修改。",
+      "error"
+    );
   } else {
-    let ready = winsayKernel(`${config.winsay_ROOT_ABS}theme.js`);
+    let ready = winsayKernel(`${winsay_ROOT_ABS}theme.js`);
     if (ready) {
-      if (lili) {
-        window.sofill.funs.loadScript(
-          window.sofill.funs.addURLParam("/appearance/themes/Sofill=/script/VS.js"),
-          undefined,
-          true
-        );
-        window.sofill.funs.loadScript(
-          window.sofill.funs.addURLParam(
-            "/appearance/themes/Sofill=/script/lili_sprite.js"
+      window.lili.funs.updateStyle(
+        "winsayThemeStyle",
+        `/appearance/themes/${winsayLocalName}/theme.css`
+      ).onload = () => {
+        console.log("ready");
+      };
+      window.lili.funs.loadScript(
+        window.lili.funs.addURLParam(
+          `/appearance/themes/${winsayLocalName}/theme.js`
+        ),
+        undefined,
+        true
+      );
+      if (window.lili.isDesktopAppMode) {
+        window.lili.funs.loadScript(
+          window.lili.funs.addURLParam(
+            `${window.lili.where.themeRoot}script/VS.js`
           ),
           undefined,
           true
         );
-        window.sofill.funs.loadScript(
-          window.sofill.funs.addURLParam(
-            "/appearance/themes/Sofill=/script/module/CPext.js"
+        window.lili.funs.loadScript(
+          window.lili.funs.addURLParam(
+            `${window.lili.where.themeRoot}script/lili_sprite.js`
+          ),
+          undefined,
+          true
+        );
+        window.lili.funs.loadScript(
+          window.lili.funs.addURLParam(
+            `${window.lili.where.themeRoot}script/module/CPext.js`
           ),
           undefined,
           true
         );
       } else {
-        window.sofill.funs.loadScript(
-          window.sofill.funs.addURLParam("/appearance/themes/Sofill-/theme.js"),
-          undefined,
-          true
+        window.Sweetalert2.fire(
+          "仅为您加载 Sofill- 内核！",
+          "当前正在不支持的平台使用 Sofill= 主题，若想体验 Sofill= 主题，请使用思源笔记 Windows 客户端",
+          "error"
         );
-        let once = new ConfirmDialog({
-          isCancel: true,
-          dragable: false,
-          XML: CD.ConfirmDialog8,
-          success() {
-            console.log("点击了确定");
-          },
-          cancel() {
-            console.log("点击了取消");
-          },
-          maskable: true,
-        });
-        once.open(() => {
-          document.getElementById(
-            "UpdateInfo"
-          ).innerHTML = `注意：当前正在不支持的平台使用 ${config.ThemeName} 主题，仅为您加载 Sofill- 内核！若想体验 Sofill= 主题，请使用思源笔记 Windows 客户端`;
-          document.getElementById(
-            "CoverWarming"
-          ).innerHTML = `当前环境推荐使用全平台支持的 Sofill- 主题`;
-        });
       }
     } else {
-      new Notification("No Ready", {
-        body: "出了点问题，主题还没准备好",
-      }).onclick = () => console.log("Notification clicked!");
+      window.Sweetalert2.fire("出了点问题，主题还没准备好", "", "error");
       console.error("no ready");
     }
   }

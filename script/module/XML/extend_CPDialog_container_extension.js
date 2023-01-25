@@ -161,7 +161,7 @@ export const configBazaarS3 = `
 export const configBazaarPlugin = `
 <div class="b3-cards">
 <div data-bazaar="plugin" data-name="DocTab_Helper" class="b3-card" data-type="dark,light" data-updated="2022-11-29T16:50:43Z">
-<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/DocTab_Helper/preview.png">
+<div class="b3-card__img"><img src="${window.lili.where.themeRoot}extension/plugin/DocTab_Helper/preview.png">
 </div>
 <div class="b3-card__info fn__flex">
   <span class="fn__flex-center fn__ellipsis">页签助手</span>
@@ -199,7 +199,7 @@ export const configBazaarPlugin = `
 </div>
 </div>
 <div data-bazaar="plugin" data-name="Export_Helper" class="b3-card" data-type="dark,light" data-updated="2022-11-21T02:53:06Z">
-<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Export_Helper/preview.png">
+<div class="b3-card__img"><img src="${window.lili.where.themeRoot}extension/plugin/Export_Helper/preview.png">
 </div>
 <div class="b3-card__info fn__flex">
   <span class="fn__flex-center fn__ellipsis">导出助手</span>
@@ -237,7 +237,7 @@ export const configBazaarPlugin = `
 </div>
 </div>
 <div data-bazaar="plugin" data-name="Fusion_Helper" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z">
-<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Fusion_Helper/preview.png">
+<div class="b3-card__img"><img src="${window.lili.where.themeRoot}extension/plugin/Fusion_Helper/preview.png">
 </div>
 <div class="b3-card__info fn__flex">
   <span class="fn__flex-center fn__ellipsis">混搭助手</span>
@@ -275,7 +275,7 @@ export const configBazaarPlugin = `
 </div>
 </div>
 <div data-bazaar="plugin" data-name="Publish_Helper" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z">
-<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Publish_Helper/preview.png">
+<div class="b3-card__img"><img src="${window.lili.where.themeRoot}extension/plugin/Publish_Helper/preview.png">
 </div>
 <div class="b3-card__info fn__flex">
   <span class="fn__flex-center fn__ellipsis">发布助手</span>
@@ -313,7 +313,7 @@ export const configBazaarPlugin = `
 </div>
 </div>
 <div data-bazaar="plugin" data-name="Graph_Helper" class="b3-card" data-type="light" data-updated="2022-11-20T14:50:03Z">
-<div class="b3-card__img"><img src="/appearance/themes/Sofill=/extension/plugin/Graph_Helper/preview.png">
+<div class="b3-card__img"><img src="${window.lili.where.themeRoot}extension/plugin/Graph_Helper/preview.png">
 </div>
 <div class="b3-card__info fn__flex">
   <span class="fn__flex-center fn__ellipsis">图谱助手</span>
