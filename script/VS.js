@@ -1,4 +1,4 @@
-import * as API from "./../../Sofill-/script/utils/api.min.js";
+import * as API from "../eHiWindom/winsay/script/utils/api.min.js";
 
 var apitoken = window.siyuan.config.api.token;
 var SYIP = window.location.host;

@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const http = require("http");
 const os = require("os");
-import * as API from "../../../../Sofill-/script/utils/api.min.js";
+import * as API from "../../../eHiWindom/winsay/script/utils/api.min.js";
 import { fetchPost, replaceLocalPath } from "../../../script/utils/liliFuns.js";
 const { ipcRenderer } = require("electron");
 const {

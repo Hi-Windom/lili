@@ -62,17 +62,12 @@ window.lili.funs.updateStyle = function (id, href) {
     return window.lili.funs.loadStyle(href, id);
   }
 };
-window.lili.funs.loadScript = function (
-  src,
-  type = "module",
-  async = false,
-  defer = false
-) {
+window.lili.funs.loadScript = function (src, async = false, defer = false) {
   const script = document.createElement("script");
-  if (type) script.type = type;
+  script.type = "module";
   if (async) script.async = true;
   if (defer) script.defer = true;
-  script.src = src;
+  script.src = window.lili.funs.addURLParam(src);
   document.head.appendChild(script);
   return script;
 };
@@ -117,18 +112,12 @@ window.lili.funs.addURLParam = function (
 };
 
 window.lili.funs.loadScript(
-  window.lili.funs.addURLParam(
-    `${window.lili.where.themeRoot}script/lib/sweetalert2.all.min.js`
-  ),
-  undefined,
+    `${window.lili.where.themeRoot}script/lib/sweetalert2.all.min.js`,
   true,
   true
 ).onload = () => {
   window.lili.funs.loadScript(
-    window.lili.funs.addURLParam(
-      `${window.lili.where.themeRoot}script/kernel.js`
-    ),
-    undefined,
+      `${window.lili.where.themeRoot}script/kernel.js`,
     true,
     true
   );

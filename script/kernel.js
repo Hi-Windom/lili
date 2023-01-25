@@ -1,11 +1,8 @@
 import { isFileExisted } from "./utils/liliFuns.js";
 var fs = null;
 var lili = null;
-var winsayLocalName = "winsay";
-var winsay_ROOT_ABS =
-  `${window.siyuan.config.system.confDir}/appearance/themes/` +
-  winsayLocalName +
-  "/";
+var winsay_ROOT = `${window.lili.where.themeRoot}eHiWindom/winsay/`;
+var winsay_ROOT_ABS = window.siyuan.config.system.confDir + winsay_ROOT;
 
 if (
   document.body.classList.contains("android")
@@ -19,14 +16,14 @@ if (
   fs = require("fs");
   window.lili.isDesktopAppMode = true;
   const { exec } = require("child_process");
-  const iconv = require("iconv-lite")
-  const child = exec("node2 -v", {encoding: 'buffer'});
+  const iconv = require("iconv-lite");
+  const child = exec("node2 -v", { encoding: "buffer" });
 
   child.stdout.on("data", (data) => {
-    console.log("stdout :", iconv.decode(data, 'cp936'));
+    console.log("stdout :", iconv.decode(data, "cp936"));
   });
   child.stderr.on("data", (err) => {
-    console.log("error :", iconv.decode(err, 'cp936'));
+    console.log("error :", iconv.decode(err, "cp936"));
   });
 }
 
@@ -35,13 +32,7 @@ async function winsayKernel(path_way) {
     let xiao = await new Promise((resolve, reject) => {
       isFileExisted(path_way).then((response) => {
         if (response) {
-          window.lili.funs.loadScript(
-            window.lili.funs.addURLParam(
-              `/appearance/themes/${winsayLocalName}/theme.js`
-            ),
-            undefined,
-            true
-          );
+          window.lili.funs.loadScript(`${winsay_ROOT}theme.js`, true);
           console.log("Sofill- kernel loaded");
           resolve(true);
         } else {
@@ -74,37 +65,22 @@ setTimeout(() => {
     if (ready) {
       window.lili.funs.updateStyle(
         "winsayThemeStyle",
-        `/appearance/themes/${winsayLocalName}/theme.css`
+        `${winsay_ROOT}theme.css`
       ).onload = () => {
         console.log("ready");
       };
-      window.lili.funs.loadScript(
-        window.lili.funs.addURLParam(
-          `/appearance/themes/${winsayLocalName}/theme.js`
-        ),
-        undefined,
-        true
-      );
+      window.lili.funs.loadScript(`${winsay_ROOT}theme.js`, true);
       if (window.lili.isDesktopAppMode) {
         window.lili.funs.loadScript(
-          window.lili.funs.addURLParam(
-            `${window.lili.where.themeRoot}script/VS.js`
-          ),
-          undefined,
+          `${window.lili.where.themeRoot}script/VS.js`,
           true
         );
         window.lili.funs.loadScript(
-          window.lili.funs.addURLParam(
-            `${window.lili.where.themeRoot}script/lili_sprite.js`
-          ),
-          undefined,
+          `${window.lili.where.themeRoot}script/lili_sprite.js`,
           true
         );
         window.lili.funs.loadScript(
-          window.lili.funs.addURLParam(
-            `${window.lili.where.themeRoot}script/module/CPext.js`
-          ),
-          undefined,
+          `${window.lili.where.themeRoot}script/module/CPext.js`,
           true
         );
       } else {

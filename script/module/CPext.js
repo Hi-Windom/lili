@@ -3,7 +3,7 @@ import {
   configBazaarS3,
   configBazaarPlugin,
 } from "./XML/extend_CPDialog_container_extension.js";
-import * as API from "../../../Sofill-/script/utils/api.min.js";
+import * as API from "../../eHiWindom/winsay/script/utils/api.min.js";
 const fs = require("fs");
 const path = require("path");
 const sleep = (timeout = 1000) =>

@@ -1,9 +1,9 @@
 import { renderPDF } from "../extension/plugin/Export_Helper/renderPDF.js";
 import { renderPublishHelper } from "../extension/plugin/Publish_Helper/renderPublishHelper.js";
 import { renderGraphHelper } from "../extension/plugin/Graph_Helper/renderGraphHelper.js";
-import * as API from "./../../Sofill-/script/utils/api.min.js";
+import * as API from "../eHiWindom/winsay/script/utils/api.min.js";
 import { isFileExisted } from "./utils/liliFuns.js";
-import * as SC_SVG from "../../Sofill=/eHiWindom/Assets_Manager/SVG_data.js";
+import * as SC_SVG from "../eHiWindom/Assets_Manager/SVG_data.js";
 var neko_container = document.createElement("div");
 var neko = document.createElement("div");
 neko.id = "neko";
